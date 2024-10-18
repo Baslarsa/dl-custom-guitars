@@ -3,6 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import classNames from "classnames";
 
 const transition = {
   type: "spring",
@@ -18,17 +19,22 @@ export const MenuItem = ({
   active,
   item,
   children,
+  textColor = "text-white",
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
+  textColor?: string;
 }) => {
   return (
     <div onMouseEnter={() => setActive(item)} className="relative">
       <motion.p
         transition={{ duration: 0.3 }}
-        className="cursor-pointer hover:opacity-100 opacity-80 text-white"
+        className={classNames(
+          textColor,
+          "cursor-pointer hover:opacity-100 opacity-80 transition-all duration-300"
+        )}
       >
         {item}
       </motion.p>

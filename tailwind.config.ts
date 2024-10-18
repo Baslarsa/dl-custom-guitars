@@ -76,7 +76,8 @@ const config = {
         poppins: ["var(--poppins)"],
       },
       backgroundImage: {
-        mainPageHero: "url('/hero.jpg')",
+        mainPageHero: "url('/hero-2.jpg')",
+        transparentGuitar: "url('/00-transp.png')",
       },
     },
   },
