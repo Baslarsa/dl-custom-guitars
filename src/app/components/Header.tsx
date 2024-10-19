@@ -1,14 +1,14 @@
 "use client";
-import classNames from "classnames";
-import SiteLogo from "./svg_components/SiteLogo";
-import Container from "./layout/Container";
-import Instagram from "./layout/Instagram";
 import { HoveredLink, Menu, MenuItem } from "@/components/ui/navbar-menu";
-import { useEffect, useState } from "react";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
+import classNames from "classnames";
+import { useMotionValueEvent, useScroll } from "framer-motion";
+import { useState } from "react";
 import useIsMobile from "../lib/hooks/useIsMobile";
 import HoverButton from "./buttons/HoverButton";
-import { useMotionValueEvent, useScroll } from "framer-motion";
+import Container from "./layout/Container";
+import Instagram from "./layout/Instagram";
+import SiteLogo from "./svg_components/SiteLogo";
 
 type MenuItem = {
   name: string;

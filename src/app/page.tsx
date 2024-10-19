@@ -1,13 +1,13 @@
 "use client";
-import { motion, useInView } from "framer-motion";
-import HomePageHero from "./components/HomePageHero";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
-import ImageAndText from "./components/ImageAndText";
-import { TitleAndText } from "./components/TitleAndText";
-import HowTo from "./components/HowTo";
-import SectionTitle from "./components/typography/SectionTitle";
 import Divider from "./components/Divider";
+import HomePageHero from "./components/HomePageHero";
+import HowTo from "./components/HowTo";
+import ImageAndText from "./components/ImageAndText";
 import { RecentBuildsCards } from "./components/RecentBuildsCard";
+import { TitleAndText } from "./components/TitleAndText";
+import SectionTitle from "./components/typography/SectionTitle";
 import { content } from "./content";
 
 export default function Home() {

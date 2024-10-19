@@ -2,15 +2,14 @@ import { HoverBorderGradient } from "@/components/ui/hover-border-gradient";
 
 const HoverButton = ({
   title,
-  href,
   onClick,
 }: {
   title: string;
-  href?: string;
   onClick?: () => void;
 }) => {
   return (
     <HoverBorderGradient
+      onClick={onClick}
       duration={0.3}
       containerClassName="rounded-full"
       as="button"

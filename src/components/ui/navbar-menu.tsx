@@ -1,9 +1,9 @@
 "use client";
-import React from "react";
-import { motion } from "framer-motion";
-import Link from "next/link";
-import Image from "next/image";
 import classNames from "classnames";
+import { motion } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
 
 const transition = {
   type: "spring",
@@ -115,7 +115,13 @@ export const ProductItem = ({
   );
 };
 
-export const HoveredLink = ({ children, ...rest }: any) => {
+export const HoveredLink = ({
+  children,
+  ...rest
+}: {
+  children: React.ReactNode;
+  href: string;
+}) => {
   return (
     <Link
       {...rest}

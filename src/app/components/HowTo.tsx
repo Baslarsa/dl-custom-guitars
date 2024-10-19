@@ -1,13 +1,5 @@
 "use client";
 import { StickyScroll } from "@/components/ui/sticky-scroll-reveal";
-import { IdCardIcon, Pencil2Icon } from "@radix-ui/react-icons";
-import {
-  CheckmarkSquare02Icon,
-  Idea01Icon,
-  IdentificationIcon,
-  UserQuestion01Icon,
-  Wrench02Icon,
-} from "hugeicons-react";
 import Image from "next/image";
 
 const HowTo = () => {

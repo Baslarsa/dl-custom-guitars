@@ -1,11 +1,8 @@
 "use client";
 import { FlipWords } from "@/components/ui/flip-words";
-import Container from "./layout/Container";
-import { LampContainer } from "@/components/ui/lamp";
-import useIsMobile from "../lib/hooks/useIsMobile";
 import classNames from "classnames";
-import { Spotlight } from "@/components/ui/spotlight";
-import { SparklesCore } from "@/components/ui/sparkles";
+import useIsMobile from "../lib/hooks/useIsMobile";
+import Container from "./layout/Container";
 
 const HomePageHero = ({
   text,

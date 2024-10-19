@@ -1,5 +1,3 @@
-import Container from "./layout/Container";
-
 const Cards = () => {
   return (
     <div className="w-full flex gap-4 justify-between flex-wrap relative">

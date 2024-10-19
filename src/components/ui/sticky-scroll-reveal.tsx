@@ -1,9 +1,8 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { useMotionValueEvent, useScroll } from "framer-motion";
-import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
 import Container from "@/app/components/layout/Container";
+import { cn } from "@/lib/utils";
+import { motion, useMotionValueEvent, useScroll } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 
 export const StickyScroll = ({
   content,
