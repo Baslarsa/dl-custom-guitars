@@ -76,7 +76,7 @@ const content = [
         <Image
           src="/hero-2.jpg"
           alt="how to 1"
-          className="object-cover"
+          className="object-contain"
           height={500}
           width={500}
         />

@@ -7,7 +7,13 @@ import classNames from "classnames";
 import { Spotlight } from "@/components/ui/spotlight";
 import { SparklesCore } from "@/components/ui/sparkles";
 
-const HomePageHero = () => {
+const HomePageHero = ({
+  text,
+  flipText,
+}: {
+  text: string;
+  flipText: string[];
+}) => {
   return (
     <div
       style={{ backgroundPosition: "50% 35%" }}
@@ -18,7 +24,7 @@ const HomePageHero = () => {
         <div className="w-full h-full pt-20 flex justify-center items-center">
           <div className="">
             <div>
-              <HeroText />
+              <HeroText text={text} flipText={flipText} />
             </div>
           </div>
         </div>
@@ -27,7 +33,7 @@ const HomePageHero = () => {
   );
 };
 
-const HeroText = () => {
+const HeroText = ({ text, flipText }: { text: string; flipText: string[] }) => {
   const isMobile = useIsMobile();
   return (
     <div
@@ -37,12 +43,9 @@ const HeroText = () => {
       )}
     >
       <h1 className="text-white text-5xl font-semibold">
-        <FlipWords
-          className="text-white -ml-1 -mt-4"
-          words={["Premium.", "High-end."]}
-        />
+        <FlipWords className="text-white -ml-1 -mt-4" words={flipText} />
       </h1>
-      <h1 className="text-white text-5xl font-semibold">Custom guitars.</h1>
+      <h1 className="text-white text-5xl font-semibold">{text}</h1>
       <h1 className="text-white text-5xl font-semibold text-center">
         Handmade in Sweden.
       </h1>
