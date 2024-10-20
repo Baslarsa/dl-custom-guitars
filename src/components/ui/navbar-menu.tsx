@@ -19,17 +19,23 @@ export const MenuItem = ({
   active,
   item,
   children,
+  href,
+  onClick,
   textColor = "text-white",
 }: {
   setActive: (item: string) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
+  href?: string;
+  onClick?: () => void;
   textColor?: string;
 }) => {
   return (
     <div onMouseEnter={() => setActive(item)} className="relative">
-      <motion.p
+      <motion.a
+        onClick={onClick}
+        href={href}
         transition={{ duration: 0.3 }}
         className={classNames(
           textColor,
@@ -37,7 +43,7 @@ export const MenuItem = ({
         )}
       >
         {item}
-      </motion.p>
+      </motion.a>
       {active !== null && (
         <motion.div
           initial={{ opacity: 0, scale: 0.85, y: -10 }}

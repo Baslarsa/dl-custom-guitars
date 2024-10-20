@@ -1,9 +1,14 @@
 "use client";
-import { HoveredLink, Menu, MenuItem } from "@/components/ui/navbar-menu";
+import { Menu, MenuItem } from "@/components/ui/navbar-menu";
+import { GroupField } from "@prismicio/client";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { useState } from "react";
+import {
+  MenuDocumentDataMenuLinkItem,
+  Simplify,
+} from "../../../prismicio-types";
 import useIsMobile from "../lib/hooks/useIsMobile";
 import HoverButton from "./buttons/HoverButton";
 import Container from "./layout/Container";
@@ -48,7 +53,11 @@ const menuItems: MenuItem[] = [
     href: "/contact",
   },
 ];
-const Header = () => {
+const Header = ({
+  menuItems,
+}: {
+  menuItems: GroupField<Simplify<MenuDocumentDataMenuLinkItem>>;
+}) => {
   const isMobile = useIsMobile();
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
@@ -70,7 +79,7 @@ const Header = () => {
           )}
         >
           <SiteLogo fill={scrolled ? "black" : "white"} className={"w-12"} />
-          {!isMobile && <Nav scrolled={scrolled} />}
+          {!isMobile && <Nav scrolled={scrolled} menuItems={menuItems} />}
           <div className={""}>
             {isMobile ? (
               <HamburgerMenuIcon
@@ -97,27 +106,26 @@ const Header = () => {
   );
 };
 
-const Nav = ({ scrolled }: { scrolled: boolean }) => {
+const Nav = ({
+  scrolled,
+  menuItems,
+}: {
+  scrolled: boolean;
+  menuItems: GroupField<Simplify<MenuDocumentDataMenuLinkItem>>;
+}) => {
   const [active, setActive] = useState<string | null>(null);
   return (
     <>
       <Menu setActive={setActive}>
         {menuItems.map((item) => (
           <MenuItem
-            key={item.name}
-            item={item.name}
+            key={item.title}
+            item={item.title as string}
+            href={item.link.text}
             active={active}
             setActive={setActive}
             textColor={scrolled ? "text-black" : "text-white"}
-          >
-            {item.subMenu && (
-              <div className="flex flex-col gap-2">
-                {item.subMenu.map((subItem) => (
-                  <HoveredLink href={subItem.href}>{subItem.name}</HoveredLink>
-                ))}
-              </div>
-            )}
-          </MenuItem>
+          />
         ))}
       </Menu>
     </>

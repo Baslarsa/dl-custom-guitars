@@ -1,8 +1,8 @@
 {
-  "id": "hero",
+  "id": "title_and_text",
   "type": "SharedSlice",
-  "name": "Hero",
-  "description": "Hero",
+  "name": "TitleAndText",
+  "description": "TitleAndText",
   "variations": [
     {
       "id": "default",
@@ -12,33 +12,39 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "hero_image": {
-          "type": "Image",
+        "title": {
+          "type": "Text",
           "config": {
-            "label": "Hero Image",
-            "constraint": {},
-            "thumbnails": []
+            "label": "Title",
+            "placeholder": ""
           }
         },
-        "hero_text": {
+        "category": {
+          "type": "Text",
+          "config": {
+            "label": "Category",
+            "placeholder": ""
+          }
+        },
+        "section_text": {
           "type": "StructuredText",
           "config": {
-            "label": "Hero Text",
+            "label": "Section Text",
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
           }
         },
-        "hero_cta": {
+        "cta": {
           "type": "Group",
           "config": {
-            "label": "Hero CTA",
+            "label": "CTA",
             "repeat": true,
             "fields": {
-              "title": {
+              "button_title": {
                 "type": "Text",
                 "config": {
-                  "label": "Title",
+                  "label": "Button Title",
                   "placeholder": ""
                 }
               },

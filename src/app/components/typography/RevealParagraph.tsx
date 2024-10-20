@@ -1,6 +1,9 @@
+"use client";
+import { RichTextField } from "@prismicio/client";
+import { PrismicRichText } from "@prismicio/react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-const RevealParagraph = ({ text }: { text: string | JSX.Element }) => {
+const RevealParagraph = ({ text }: { text: RichTextField }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
@@ -16,7 +19,7 @@ const RevealParagraph = ({ text }: { text: string | JSX.Element }) => {
         ease: "easeInOut",
       }}
     >
-      {text}
+      <PrismicRichText field={text} />
     </motion.p>
   );
 };

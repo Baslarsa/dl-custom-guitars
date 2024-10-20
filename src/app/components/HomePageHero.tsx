@@ -1,5 +1,6 @@
 "use client";
-import { FlipWords } from "@/components/ui/flip-words";
+import { RichTextField } from "@prismicio/client";
+import { PrismicRichText } from "@prismicio/react";
 import classNames from "classnames";
 import useIsMobile from "../lib/hooks/useIsMobile";
 import Container from "./layout/Container";
@@ -8,13 +9,13 @@ const HomePageHero = ({
   text,
   flipText,
 }: {
-  text: string;
+  text: RichTextField;
   flipText: string[];
 }) => {
   return (
     <div
       style={{ backgroundPosition: "50% 35%" }}
-      className={`w-full h-[90vh] bg-mainPageHero bg-cover relative`}
+      className={`w-full h-[80vh] bg-mainPageHero bg-cover relative`}
     >
       <div className="-z-5 w-full h-full absolute bg-black/60"></div>
       <Container className="h-full">
@@ -30,8 +31,20 @@ const HomePageHero = ({
   );
 };
 
-const HeroText = ({ text, flipText }: { text: string; flipText: string[] }) => {
+const HeroText = ({
+  text,
+  flipText,
+}: {
+  text: RichTextField;
+  flipText: string[];
+}) => {
+  console.log(text);
   const isMobile = useIsMobile();
+  const components = {
+    heading1: ({ children }: { children: React.ReactNode }) => (
+      <h1 className="text-white text-5xl font-semibold">{children}</h1>
+    ),
+  };
   return (
     <div
       className={classNames(
@@ -39,13 +52,7 @@ const HeroText = ({ text, flipText }: { text: string; flipText: string[] }) => {
         "relative z-1 flex flex-col gap-2"
       )}
     >
-      <h1 className="text-white text-5xl font-semibold">
-        <FlipWords className="text-white -ml-1 -mt-4" words={flipText} />
-      </h1>
-      <h1 className="text-white text-5xl font-semibold">{text}</h1>
-      <h1 className="text-white text-5xl font-semibold text-center">
-        Handmade in Sweden.
-      </h1>
+      <PrismicRichText field={text} components={components} />
     </div>
   );
 };

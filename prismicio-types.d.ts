@@ -4,68 +4,213 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomeDocumentDataSlicesSlice = HeroSlice;
+type DefaultPageDocumentDataSlicesSlice = HeroSlice | TitleAndTextSlice;
 
 /**
- * Content for Home documents
+ * Content for Default Page documents
  */
-interface HomeDocumentData {
+interface DefaultPageDocumentData {
   /**
-   * Slice Zone field in *Home*
+   * SEO Title field in *Default Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: default_page.seo_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_title: prismic.KeyTextField;
+
+  /**
+   * SEO Description field in *Default Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: default_page.seo_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_description: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Default Page*
    *
    * - **Field Type**: Slice Zone
    * - **Placeholder**: *None*
-   * - **API ID Path**: home.slices[]
+   * - **API ID Path**: default_page.slices[]
    * - **Tab**: Main
    * - **Documentation**: https://prismic.io/docs/field#slices
    */
-  slices: prismic.SliceZone<HomeDocumentDataSlicesSlice> /**
-   * Meta Title field in *Home*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A title of the page used for social media and search engines
-   * - **API ID Path**: home.meta_title
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */;
-  meta_title: prismic.KeyTextField;
-
-  /**
-   * Meta Description field in *Home*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: A brief summary of the page
-   * - **API ID Path**: home.meta_description
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  meta_description: prismic.KeyTextField;
-
-  /**
-   * Meta Image field in *Home*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: home.meta_image
-   * - **Tab**: SEO & Metadata
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  meta_image: prismic.ImageField<never>;
+  slices: prismic.SliceZone<DefaultPageDocumentDataSlicesSlice>;
 }
 
 /**
- * Home document from Prismic
+ * Default Page document from Prismic
  *
- * - **API ID**: `home`
+ * - **API ID**: `default_page`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type DefaultPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<DefaultPageDocumentData>,
+    "default_page",
+    Lang
+  >;
+
+type HomePageDocumentDataSlicesSlice = TitleAndTextSlice | HeroSlice;
+
+/**
+ * Content for Home Page documents
+ */
+interface HomePageDocumentData {
+  /**
+   * SEO Title field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.seo_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_title: prismic.KeyTextField;
+
+  /**
+   * SEO Description field in *Home Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.seo_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_description: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Home Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: home_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<HomePageDocumentDataSlicesSlice>;
+}
+
+/**
+ * Home Page document from Prismic
+ *
+ * - **API ID**: `home_page`
  * - **Repeatable**: `false`
  * - **Documentation**: https://prismic.io/docs/custom-types
  *
  * @typeParam Lang - Language API ID of the document.
  */
-export type HomeDocument<Lang extends string = string> =
-  prismic.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+export type HomePageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<HomePageDocumentData>,
+    "home_page",
+    Lang
+  >;
 
-export type AllDocumentTypes = HomeDocument;
+/**
+ * Item in *Menu → Menu link*
+ */
+export interface MenuDocumentDataMenuLinkItem {
+  /**
+   * Title field in *Menu → Menu link*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.menu_link[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *Menu → Menu link*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.menu_link[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+type MenuDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Menu documents
+ */
+interface MenuDocumentData {
+  /**
+   * Menu link field in *Menu*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.menu_link[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  menu_link: prismic.GroupField<Simplify<MenuDocumentDataMenuLinkItem>>;
+
+  /**
+   * `slices` field in *Menu*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: menu.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<MenuDocumentDataSlicesSlice>;
+}
+
+/**
+ * Menu document from Prismic
+ *
+ * - **API ID**: `menu`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type MenuDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<Simplify<MenuDocumentData>, "menu", Lang>;
+
+export type AllDocumentTypes =
+  | DefaultPageDocument
+  | HomePageDocument
+  | MenuDocument;
+
+/**
+ * Item in *Hero → Default → Primary → Hero CTA*
+ */
+export interface HeroSliceDefaultPrimaryHeroCtaItem {
+  /**
+   * Title field in *Hero → Default → Primary → Hero CTA*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.hero_cta[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *Hero → Default → Primary → Hero CTA*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.hero_cta[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -82,14 +227,24 @@ export interface HeroSliceDefaultPrimary {
   hero_image: prismic.ImageField<never>;
 
   /**
-   * Hero Title field in *Hero → Default → Primary*
+   * Hero Text field in *Hero → Default → Primary*
    *
-   * - **Field Type**: Text
-   * - **Placeholder**: This is a Hero text
-   * - **API ID Path**: hero.default.primary.hero_title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.hero_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
-  hero_title: prismic.KeyTextField;
+  hero_text: prismic.RichTextField;
+
+  /**
+   * Hero CTA field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.hero_cta[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  hero_cta: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryHeroCtaItem>>;
 }
 
 /**
@@ -119,6 +274,106 @@ type HeroSliceVariation = HeroSliceDefault;
  */
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
+/**
+ * Item in *TitleAndText → Default → Primary → CTA*
+ */
+export interface TitleAndTextSliceDefaultPrimaryCtaItem {
+  /**
+   * Button Title field in *TitleAndText → Default → Primary → CTA*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_and_text.default.primary.cta[].button_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_title: prismic.KeyTextField;
+
+  /**
+   * Link field in *TitleAndText → Default → Primary → CTA*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_and_text.default.primary.cta[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *TitleAndText → Default → Primary*
+ */
+export interface TitleAndTextSliceDefaultPrimary {
+  /**
+   * Title field in *TitleAndText → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_and_text.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Category field in *TitleAndText → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_and_text.default.primary.category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * Section Text field in *TitleAndText → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_and_text.default.primary.section_text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_text: prismic.RichTextField;
+
+  /**
+   * CTA field in *TitleAndText → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: title_and_text.default.primary.cta[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  cta: prismic.GroupField<Simplify<TitleAndTextSliceDefaultPrimaryCtaItem>>;
+}
+
+/**
+ * Default variation for TitleAndText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TitleAndTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TitleAndTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TitleAndText*
+ */
+type TitleAndTextSliceVariation = TitleAndTextSliceDefault;
+
+/**
+ * TitleAndText Shared Slice
+ *
+ * - **API ID**: `title_and_text`
+ * - **Description**: TitleAndText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TitleAndTextSlice = prismic.SharedSlice<
+  "title_and_text",
+  TitleAndTextSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -140,14 +395,27 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
-      HomeDocument,
-      HomeDocumentData,
-      HomeDocumentDataSlicesSlice,
+      DefaultPageDocument,
+      DefaultPageDocumentData,
+      DefaultPageDocumentDataSlicesSlice,
+      HomePageDocument,
+      HomePageDocumentData,
+      HomePageDocumentDataSlicesSlice,
+      MenuDocument,
+      MenuDocumentData,
+      MenuDocumentDataMenuLinkItem,
+      MenuDocumentDataSlicesSlice,
       AllDocumentTypes,
       HeroSlice,
+      HeroSliceDefaultPrimaryHeroCtaItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      TitleAndTextSlice,
+      TitleAndTextSliceDefaultPrimaryCtaItem,
+      TitleAndTextSliceDefaultPrimary,
+      TitleAndTextSliceVariation,
+      TitleAndTextSliceDefault,
     };
   }
 }

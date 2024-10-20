@@ -46,7 +46,7 @@ const ImageAndText = ({
           >
             {title}
           </motion.h6>
-          <motion.p
+          <motion.div
             ref={ref}
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
@@ -58,7 +58,7 @@ const ImageAndText = ({
             }}
           >
             {text}
-          </motion.p>
+          </motion.div>
         </div>
       </div>
     </div>

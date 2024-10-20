@@ -25,7 +25,7 @@ export const content = {
   recentBuildsSection: {
     title: "Recent Build",
     dl00: (
-      <div className="text-white/80">
+      <span className="text-white/80">
         <p>
           <strong className="text-white">Model:</strong>&nbsp;DL-00
         </p>
@@ -61,7 +61,7 @@ export const content = {
           <strong className="text-white">Bindings:</strong>&nbsp;Indian Rosewood
           with herringbone purfling
         </p>
-      </div>
+      </span>
     ),
     dlOm: (
       <div className="text-white/80">
