@@ -31,14 +31,6 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"button_title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "fall",
-									"type": "Text"
-								}
-							],
-							[
 								"link",
 								{
 									"__TYPE__": "LinkContent",
@@ -47,6 +39,14 @@
 										"url": "https://prismic.io",
 										"text": "window"
 									}
+								}
+							],
+							[
+								"title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "change",
+									"type": "Text"
 								}
 							]
 						]

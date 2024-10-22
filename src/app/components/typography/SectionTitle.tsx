@@ -1,7 +1,12 @@
 "use client";
+import { KeyTextField } from "@prismicio/client";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-const SectionTitle = ({ title }: { title: string | JSX.Element }) => {
+const SectionTitle = ({
+  title,
+}: {
+  title: string | JSX.Element | KeyTextField;
+}) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (

@@ -7,9 +7,8 @@ const RevealParagraph = ({ text }: { text: RichTextField }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
   return (
-    <motion.p
+    <motion.div
       ref={ref}
-      className="leading-10"
       initial={{ opacity: 0 }}
       animate={{ opacity: isInView ? 1 : 0 }}
       viewport={{ once: true, amount: "some" }}
@@ -20,7 +19,7 @@ const RevealParagraph = ({ text }: { text: RichTextField }) => {
       }}
     >
       <PrismicRichText field={text} />
-    </motion.p>
+    </motion.div>
   );
 };
 

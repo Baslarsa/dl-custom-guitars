@@ -4,7 +4,11 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type DefaultPageDocumentDataSlicesSlice = HeroSlice | TitleAndTextSlice;
+type DefaultPageDocumentDataSlicesSlice =
+  | ImageAndTextSlice
+  | DividerSlice
+  | HeroSlice
+  | TitleAndTextSlice;
 
 /**
  * Content for Default Page documents
@@ -60,7 +64,13 @@ export type DefaultPageDocument<Lang extends string = string> =
     Lang
   >;
 
-type HomePageDocumentDataSlicesSlice = TitleAndTextSlice | HeroSlice;
+type HomePageDocumentDataSlicesSlice =
+  | ContactFormSlice
+  | ParallaxImageGridSlice
+  | DividerSlice
+  | ImageAndTextSlice
+  | TitleAndTextSlice
+  | HeroSlice;
 
 /**
  * Content for Home Page documents
@@ -188,6 +198,91 @@ export type AllDocumentTypes =
   | MenuDocument;
 
 /**
+ * Primary content in *ContactForm → Default → Primary*
+ */
+export interface ContactFormSliceDefaultPrimary {
+  /**
+   * Title field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *ContactForm → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact_form.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for ContactForm Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactFormSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ContactForm*
+ */
+type ContactFormSliceVariation = ContactFormSliceDefault;
+
+/**
+ * ContactForm Shared Slice
+ *
+ * - **API ID**: `contact_form`
+ * - **Description**: ContactForm
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactFormSlice = prismic.SharedSlice<
+  "contact_form",
+  ContactFormSliceVariation
+>;
+
+/**
+ * Default variation for Divider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DividerSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Divider*
+ */
+type DividerSliceVariation = DividerSliceDefault;
+
+/**
+ * Divider Shared Slice
+ *
+ * - **API ID**: `divider`
+ * - **Description**: Divider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type DividerSlice = prismic.SharedSlice<
+  "divider",
+  DividerSliceVariation
+>;
+
+/**
  * Item in *Hero → Default → Primary → Hero CTA*
  */
 export interface HeroSliceDefaultPrimaryHeroCtaItem {
@@ -227,6 +322,16 @@ export interface HeroSliceDefaultPrimary {
   hero_image: prismic.ImageField<never>;
 
   /**
+   * Flip Words field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.flip_words
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  flip_words: prismic.KeyTextField;
+
+  /**
    * Hero Text field in *Hero → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -245,6 +350,16 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   hero_cta: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryHeroCtaItem>>;
+
+  /**
+   * Hero description field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.hero_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  hero_description: prismic.KeyTextField;
 }
 
 /**
@@ -275,18 +390,285 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *ImageAndText → Default → Primary → CTAs*
+ */
+export interface ImageAndTextSliceDefaultPrimaryCtasItem {
+  /**
+   * Title field in *ImageAndText → Default → Primary → CTAs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.default.primary.ctas[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *ImageAndText → Default → Primary → CTAs*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.default.primary.ctas[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Item in *ImageAndText → Reverse → Primary → CTAs*
+ */
+export interface ImageAndTextSliceReversePrimaryCtasItem {
+  /**
+   * Title field in *ImageAndText → Reverse → Primary → CTAs*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.reverse.primary.ctas[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Link field in *ImageAndText → Reverse → Primary → CTAs*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.reverse.primary.ctas[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *ImageAndText → Default → Primary*
+ */
+export interface ImageAndTextSliceDefaultPrimary {
+  /**
+   * Image field in *ImageAndText → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.default.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *ImageAndText → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *ImageAndText → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.default.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * CTAs field in *ImageAndText → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.default.primary.ctas[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  ctas: prismic.GroupField<Simplify<ImageAndTextSliceDefaultPrimaryCtasItem>>;
+
+  /**
+   * CTA Group field in *ImageAndText → Default → Primary*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.default.primary.cta_group
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cta_group: prismic.ContentRelationshipField<"cta_group">;
+}
+
+/**
+ * Default variation for ImageAndText Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageAndTextSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ImageAndTextSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Primary content in *ImageAndText → Reverse → Primary*
+ */
+export interface ImageAndTextSliceReversePrimary {
+  /**
+   * Image field in *ImageAndText → Reverse → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.reverse.primary.image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Title field in *ImageAndText → Reverse → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.reverse.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Text field in *ImageAndText → Reverse → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.reverse.primary.text
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  text: prismic.RichTextField;
+
+  /**
+   * CTAs field in *ImageAndText → Reverse → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: image_and_text.reverse.primary.ctas[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  ctas: prismic.GroupField<Simplify<ImageAndTextSliceReversePrimaryCtasItem>>;
+}
+
+/**
+ * Reverse variation for ImageAndText Slice
+ *
+ * - **API ID**: `reverse`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageAndTextSliceReverse = prismic.SharedSliceVariation<
+  "reverse",
+  Simplify<ImageAndTextSliceReversePrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ImageAndText*
+ */
+type ImageAndTextSliceVariation =
+  | ImageAndTextSliceDefault
+  | ImageAndTextSliceReverse;
+
+/**
+ * ImageAndText Shared Slice
+ *
+ * - **API ID**: `image_and_text`
+ * - **Description**: ImageAndText
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ImageAndTextSlice = prismic.SharedSlice<
+  "image_and_text",
+  ImageAndTextSliceVariation
+>;
+
+/**
+ * Item in *ParallaxImageGrid → Default → Primary → Images*
+ */
+export interface ParallaxImageGridSliceDefaultPrimaryImagesItem {
+  /**
+   * Link field in *ParallaxImageGrid → Default → Primary → Images*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax_image_grid.default.primary.images[].link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *ParallaxImageGrid → Default → Primary*
+ */
+export interface ParallaxImageGridSliceDefaultPrimary {
+  /**
+   * Title field in *ParallaxImageGrid → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax_image_grid.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Images field in *ParallaxImageGrid → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: parallax_image_grid.default.primary.images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  images: prismic.GroupField<
+    Simplify<ParallaxImageGridSliceDefaultPrimaryImagesItem>
+  >;
+}
+
+/**
+ * Default variation for ParallaxImageGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParallaxImageGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ParallaxImageGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ParallaxImageGrid*
+ */
+type ParallaxImageGridSliceVariation = ParallaxImageGridSliceDefault;
+
+/**
+ * ParallaxImageGrid Shared Slice
+ *
+ * - **API ID**: `parallax_image_grid`
+ * - **Description**: ParallaxImageGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ParallaxImageGridSlice = prismic.SharedSlice<
+  "parallax_image_grid",
+  ParallaxImageGridSliceVariation
+>;
+
+/**
  * Item in *TitleAndText → Default → Primary → CTA*
  */
 export interface TitleAndTextSliceDefaultPrimaryCtaItem {
   /**
-   * Button Title field in *TitleAndText → Default → Primary → CTA*
+   * Title field in *TitleAndText → Default → Primary → CTA*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: title_and_text.default.primary.cta[].button_title
+   * - **API ID Path**: title_and_text.default.primary.cta[].title
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  button_title: prismic.KeyTextField;
+  title: prismic.KeyTextField;
 
   /**
    * Link field in *TitleAndText → Default → Primary → CTA*
@@ -406,11 +788,31 @@ declare module "@prismicio/client" {
       MenuDocumentDataMenuLinkItem,
       MenuDocumentDataSlicesSlice,
       AllDocumentTypes,
+      ContactFormSlice,
+      ContactFormSliceDefaultPrimary,
+      ContactFormSliceVariation,
+      ContactFormSliceDefault,
+      DividerSlice,
+      DividerSliceVariation,
+      DividerSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryHeroCtaItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ImageAndTextSlice,
+      ImageAndTextSliceDefaultPrimaryCtasItem,
+      ImageAndTextSliceDefaultPrimary,
+      ImageAndTextSliceReversePrimaryCtasItem,
+      ImageAndTextSliceReversePrimary,
+      ImageAndTextSliceVariation,
+      ImageAndTextSliceDefault,
+      ImageAndTextSliceReverse,
+      ParallaxImageGridSlice,
+      ParallaxImageGridSliceDefaultPrimaryImagesItem,
+      ParallaxImageGridSliceDefaultPrimary,
+      ParallaxImageGridSliceVariation,
+      ParallaxImageGridSliceDefault,
       TitleAndTextSlice,
       TitleAndTextSliceDefaultPrimaryCtaItem,
       TitleAndTextSliceDefaultPrimary,

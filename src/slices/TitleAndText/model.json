@@ -41,10 +41,10 @@
             "label": "CTA",
             "repeat": true,
             "fields": {
-              "button_title": {
+              "title": {
                 "type": "Text",
                 "config": {
-                  "label": "Button Title",
+                  "label": "Title",
                   "placeholder": ""
                 }
               },

@@ -20,6 +20,13 @@
             "thumbnails": []
           }
         },
+        "flip_words": {
+          "type": "Text",
+          "config": {
+            "label": "Flip Words",
+            "placeholder": ""
+          }
+        },
         "hero_text": {
           "type": "StructuredText",
           "config": {
@@ -53,6 +60,13 @@
                 }
               }
             }
+          }
+        },
+        "hero_description": {
+          "type": "Text",
+          "config": {
+            "label": "Hero description",
+            "placeholder": ""
           }
         }
       },

@@ -90,7 +90,6 @@ const Header = ({
               />
             ) : (
               <div className="flex gap-4 items-center">
-                <HoverButton title={"Contact"} />
                 <Instagram
                   className={classNames(
                     scrolled ? "fill-black" : "fill-white",

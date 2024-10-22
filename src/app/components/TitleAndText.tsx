@@ -6,31 +6,33 @@ import HoverButton from "./buttons/HoverButton";
 import Container from "./layout/Container";
 import RevealParagraph from "./typography/RevealParagraph";
 import SectionTitle from "./typography/SectionTitle";
+import SectionCategory from "./typography/SectionCategory";
+import ButtonGroup, {
+  buttonGroupArrayToButtonItems,
+} from "./buttons/ButtonGroup";
 
 export const TitleAndTextComponent = ({
   title,
   text,
+  category,
   ctas,
 }: {
   title: KeyTextField;
+  category: KeyTextField;
   text: RichTextField;
   ctas: any;
 }) => {
+  const buttons = buttonGroupArrayToButtonItems(ctas);
   return (
     <Container>
-      <div className="text-white flex py-10 flex-col md:flex-row md:gap-12 gap-4">
-        <div className="md:w-2/5 w-full">
+      <div className="text-white flex py-10 flex-col md:flex-row">
+        <div className="md:w-1/2 w-full pr-8">
+          <SectionCategory text={category} />
           <SectionTitle title={title as string} />
         </div>
-        <div className="md:w-3/5 w-full">
+        <div className="md:w-1/2 w-full md:px-8 px-4">
           <RevealParagraph text={text} />
-          <div className="py-4 flex gap-2 items-center">
-            {ctas.map((cta: any, index: number) => (
-              <Link key={index} href={cta.link.url}>
-                <HoverButton title={cta.button_title} key={index} />
-              </Link>
-            ))}
-          </div>
+          {ctas && <ButtonGroup buttons={buttons} />}
         </div>
       </div>
     </Container>

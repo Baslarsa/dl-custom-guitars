@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { PrismicPreview } from "@prismicio/next";
 import config from "../../slicemachine.config.json";
 import { createClient } from "@/prismicio";
+import Footer from "./components/layout/Footer";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "700"],
@@ -40,6 +41,7 @@ export default async function RootLayout({
           <Header menuItems={menuItems} />
           <div className="h-[90px]"></div>
           {children}
+          <Footer />
         </div>
         <PrismicPreview repositoryName={config.repositoryName} />
       </body>

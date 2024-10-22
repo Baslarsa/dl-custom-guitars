@@ -65,6 +65,16 @@
 						}
 					}
 				]
+			},
+			"flip_words": {
+				"__TYPE__": "FieldContent",
+				"value": "pie",
+				"type": "Text"
+			},
+			"hero_description": {
+				"__TYPE__": "FieldContent",
+				"value": "men",
+				"type": "Text"
 			}
 		},
 		"items": []

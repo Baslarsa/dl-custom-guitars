@@ -13,7 +13,7 @@ const HoverButton = ({
       duration={0.3}
       containerClassName="rounded-full"
       as="button"
-      className="dark:bg-black bg-white text-black dark:text-white flex items-center space-x-2"
+      className="bg-white text-black flex items-center space-x-2"
     >
       {title}
     </HoverBorderGradient>
