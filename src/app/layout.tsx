@@ -26,7 +26,9 @@ export default async function RootLayout({
 }>) {
   const client = createClient();
   const request = await client.getByType("menu");
+  const footerRequest = await client.getSingle("footer");
   const menuItems = request.results[0].data.menu_link;
+  const footerLinks = footerRequest.data;
   return (
     <html lang="en" className="dark">
       <head>
@@ -41,7 +43,7 @@ export default async function RootLayout({
           <Header menuItems={menuItems} />
           <div className="h-[90px]"></div>
           {children}
-          <Footer />
+          <Footer footerData={footerLinks} />
         </div>
         <PrismicPreview repositoryName={config.repositoryName} />
       </body>

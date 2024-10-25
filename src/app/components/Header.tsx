@@ -25,34 +25,6 @@ type MenuItem = {
   }[];
 };
 
-const menuItems: MenuItem[] = [
-  {
-    name: "Home",
-    href: "/",
-  },
-  {
-    name: "Guitars",
-    href: "/guitars",
-    subMenu: [
-      {
-        name: "DL-00",
-        href: "/guitars/dl-00",
-      },
-      {
-        name: "DL-OM",
-        href: "/guitars/dl-om",
-      },
-    ],
-  },
-  {
-    name: "About",
-    href: "/about",
-  },
-  {
-    name: "contact",
-    href: "/contact",
-  },
-];
 const Header = ({
   menuItems,
 }: {
