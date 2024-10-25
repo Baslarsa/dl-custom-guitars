@@ -23,9 +23,9 @@ export async function POST(req: Request) {
     });
 
     const mailOptions = {
-      from: process.env.EMAIL_USER,
+      from: `DL Custom Guitars Website <${process.env.EMAIL_USER}>`,
       to: process.env.EMAIL_USER_RECEIVER,
-      subject: `DL Custom GuitarsContact website form submission from ${name} (${email})`,
+      subject: `Form Submission from ${name} (${email})`,
       text: message,
     };
 
