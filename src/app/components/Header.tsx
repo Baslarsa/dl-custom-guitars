@@ -62,7 +62,7 @@ const Header = ({
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   useMotionValueEvent(scrollY, "change", (latest) => {
-    latest > 200 ? setScrolled(true) : setScrolled(false);
+    latest > 50 ? setScrolled(true) : setScrolled(false);
   });
   return (
     <div

@@ -63,7 +63,7 @@ const HomePageHero = ({
                 />
               </div>
               {ctas && (
-                <div>
+                <div className="relative">
                   <ButtonGroup buttons={buttons} />
                 </div>
               )}

@@ -1,15 +1,12 @@
-// A 50/50 split between title and text component responsive as one column on mobile and two columns on desktop
-
+"use client";
 import { KeyTextField, RichTextField } from "@prismicio/client";
-import Link from "next/link";
-import HoverButton from "./buttons/HoverButton";
-import Container from "./layout/Container";
-import RevealParagraph from "./typography/RevealParagraph";
-import SectionTitle from "./typography/SectionTitle";
-import SectionCategory from "./typography/SectionCategory";
 import ButtonGroup, {
   buttonGroupArrayToButtonItems,
 } from "./buttons/ButtonGroup";
+import Container from "./layout/Container";
+import RevealParagraph from "./typography/RevealParagraph";
+import SectionCategory from "./typography/SectionCategory";
+import SectionTitle from "./typography/SectionTitle";
 
 export const TitleAndTextComponent = ({
   title,
@@ -32,7 +29,7 @@ export const TitleAndTextComponent = ({
         </div>
         <div className="md:w-1/2 w-full md:px-8 px-4">
           <RevealParagraph text={text} />
-          {ctas && <ButtonGroup buttons={buttons} />}
+          {ctas && <ButtonGroup buttons={buttons} dark />}
         </div>
       </div>
     </Container>

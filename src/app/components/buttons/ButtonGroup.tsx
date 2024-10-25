@@ -1,3 +1,4 @@
+"use client";
 import { Content, GroupField, LinkField } from "@prismicio/client";
 import { Simplify } from "../../../../prismicio-types";
 import Link from "next/link";
@@ -26,14 +27,23 @@ export const buttonGroupArrayToButtonItems = (
   }));
 };
 
-const ButtonGroup = ({ buttons }: { buttons: ButtonItem[] | undefined }) => {
+const ButtonGroup = ({
+  buttons,
+  dark,
+}: {
+  buttons: ButtonItem[] | undefined;
+  dark?: boolean;
+}) => {
   if (!buttons) return null;
   return (
     <div className="my-4 flex gap-2 items-center">
       {buttons?.map((button) => (
-        <Link key={button.title} href={button.href || "/"}>
-          <HoverButton key={button.title + button.href} title={button.title} />
-        </Link>
+        <HoverButton
+          key={button.title + button.href}
+          title={button.title}
+          href={button.href}
+          dark={dark}
+        />
       ))}
     </div>
   );

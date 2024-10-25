@@ -74,7 +74,7 @@ const ImageAndTextComponent = ({
           >
             <div>
               <PrismicRichText field={text} />
-              {buttons && <ButtonGroup buttons={ctas} />}
+              {buttons && <ButtonGroup buttons={ctas} dark />}
             </div>
           </motion.div>
         </div>
