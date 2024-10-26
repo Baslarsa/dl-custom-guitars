@@ -16,7 +16,7 @@ const Divider = ({ slice }: DividerProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <DividerComponent />;
+      <DividerComponent />
     </section>
   );
 };

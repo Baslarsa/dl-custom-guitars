@@ -15,6 +15,7 @@ const TitleAndText = ({ slice }: TitleAndTextProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="my-12 bg-black"
     >
       <TitleAndTextComponent
         title={slice.primary.title}

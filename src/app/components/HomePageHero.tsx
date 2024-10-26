@@ -91,10 +91,10 @@ const HeroText = ({
     >
       <FlipWords
         words={flipText || [""]}
-        className="text-white text-5xl font-semibold"
+        className="text-white text-5xl font-semibold text-center"
       />
-      <RichText text={text} />
-      <p>{description}</p>
+      <RichText text={text} className="text-center" />
+      <p className="text-center">{description}</p>
     </div>
   );
 };

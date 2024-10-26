@@ -1,13 +1,24 @@
+"use client";
 import { RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import RevealParagraph from "./RevealParagraph";
 import Link from "next/link";
+import classNames from "classnames";
+import useIsMobile from "@/app/lib/hooks/useIsMobile";
 
-const RichText = ({ text }: { text: RichTextField }) => {
-  console.log(text);
+const RichText = ({
+  text,
+  className,
+}: {
+  text: RichTextField;
+  className?: string;
+}) => {
+  const isMobile = useIsMobile();
   const components = {
     heading1: ({ children }: { children: React.ReactNode }) => (
-      <h1 className="text-white text-5xl font-semibold">{children}</h1>
+      <h1 className={classNames("text-5xl font-bold pb-6", className)}>
+        {children}
+      </h1>
     ),
     paragraph: ({ children }: { children: React.ReactNode }) => (
       <p className="text-white">{children}</p>
@@ -20,8 +31,8 @@ const RichText = ({ text }: { text: RichTextField }) => {
       >
         {
           <iframe
-            width="500"
-            height="313"
+            width={isMobile ? "100%" : "560"}
+            height={isMobile ? "100%" : "315"}
             src="https://www.youtube.com/embed/sG0MigLe7-o?feature=oembed"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen

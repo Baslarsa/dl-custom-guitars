@@ -23,7 +23,7 @@ const ParallaxImageGrid = ({ slice }: ParallaxImageGridProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="my-12"
+      className="my-12 bg-black"
     >
       <Container>
         <div className="flex justify-center">

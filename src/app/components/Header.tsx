@@ -4,7 +4,7 @@ import { GroupField } from "@prismicio/client";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 import { useMotionValueEvent, useScroll } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   MenuDocumentDataMenuLinkItem,
   Simplify,
@@ -14,6 +14,7 @@ import HoverButton from "./buttons/HoverButton";
 import Container from "./layout/Container";
 import Instagram from "./layout/Instagram";
 import SiteLogo from "./svg_components/SiteLogo";
+import Link from "next/link";
 
 type MenuItem = {
   name: string;
@@ -31,15 +32,27 @@ const Header = ({
   menuItems: GroupField<Simplify<MenuDocumentDataMenuLinkItem>>;
 }) => {
   const isMobile = useIsMobile();
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);
   useMotionValueEvent(scrollY, "change", (latest) => {
     latest > 50 ? setScrolled(true) : setScrolled(false);
   });
+  const handleMobileNavToggle = () => {
+    setMobileNavOpen(!mobileNavOpen);
+  };
+
+  useEffect(() => {
+    if (mobileNavOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [mobileNavOpen]);
   return (
     <div
       className={classNames(
-        "text-black transition-all duration-300 flex fixed top-0 w-full z-40",
+        "text-black transition-all duration-300 flex fixed top-0 w-full z-40 flex-col",
         scrolled && "bg-white"
       )}
     >
@@ -55,6 +68,7 @@ const Header = ({
           <div className={""}>
             {isMobile ? (
               <HamburgerMenuIcon
+                onClick={handleMobileNavToggle}
                 className={classNames(
                   scrolled ? "text-black" : "text-white",
                   "h-12 w-12"
@@ -73,6 +87,9 @@ const Header = ({
           </div>
         </div>
       </Container>
+      {mobileNavOpen && (
+        <MobileNav menuItems={menuItems} onClick={handleMobileNavToggle} />
+      )}
     </div>
   );
 };
@@ -101,6 +118,35 @@ const Nav = ({
         ))}
       </Menu>
     </>
+  );
+};
+
+const MobileNav = ({
+  menuItems,
+  onClick,
+}: {
+  menuItems: GroupField<Simplify<MenuDocumentDataMenuLinkItem>>;
+  onClick: () => void;
+}) => {
+  const [active, setActive] = useState<string | null>(null);
+  const handleClick = () => {
+    setActive(null);
+    onClick();
+  };
+  return (
+    <div className="bg-black/90 text-white p-12 h-[95vh] flex flex-col items-center justify-center gap-6">
+      {menuItems.map((item) => (
+        <Link
+          key={item.title}
+          // @ts-ignore
+          href={item.link.text || item.link.url || ""}
+          onClick={handleClick}
+          className="text-2xl"
+        >
+          {item.title}
+        </Link>
+      ))}
+    </div>
   );
 };
 

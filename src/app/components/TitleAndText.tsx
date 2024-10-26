@@ -23,7 +23,7 @@ export const TitleAndTextComponent = ({
   return (
     <Container>
       <div className="text-white flex py-10 flex-col md:flex-row">
-        <div className="md:w-1/2 w-full pr-8">
+        <div className="md:w-1/2 w-full pr-8 text-center md:text-left">
           <SectionCategory text={category} />
           <SectionTitle title={title as string} />
         </div>
