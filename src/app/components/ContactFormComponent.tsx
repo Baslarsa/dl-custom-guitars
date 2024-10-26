@@ -13,6 +13,7 @@ import { KeyTextField, RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import SectionTitle from "./typography/SectionTitle";
 import useSendEmail from "@/hooks/useSendEmail";
+import RichText from "./typography/RichText";
 
 const initialFormState = {
   name: "",
@@ -70,7 +71,7 @@ export function ContactFormComponent({
       className="max-w-xl w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-white dark:bg-black"
     >
       <SectionTitle title={title} />
-      <PrismicRichText field={description} />
+      <RichText text={description} />
 
       <form className="my-8" onSubmit={handleSubmit}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">

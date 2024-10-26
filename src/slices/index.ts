@@ -7,6 +7,8 @@ export const components = {
   divider: dynamic(() => import("./Divider")),
   hero: dynamic(() => import("./Hero")),
   image_and_text: dynamic(() => import("./ImageAndText")),
+  page_title: dynamic(() => import("./PageTitle")),
   parallax_image_grid: dynamic(() => import("./ParallaxImageGrid")),
+  perks: dynamic(() => import("./Perks")),
   title_and_text: dynamic(() => import("./TitleAndText")),
 };

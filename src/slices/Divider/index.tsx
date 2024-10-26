@@ -11,7 +11,14 @@ export type DividerProps = SliceComponentProps<Content.DividerSlice>;
  * Component for "Divider" Slices.
  */
 const Divider = ({ slice }: DividerProps): JSX.Element => {
-  return <DividerComponent />;
+  return (
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
+      <DividerComponent />;
+    </section>
+  );
 };
 
 export default Divider;

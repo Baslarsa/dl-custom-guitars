@@ -92,7 +92,8 @@ const Nav = ({
           <MenuItem
             key={item.title}
             item={item.title as string}
-            href={item.link.text}
+            // @ts-ignore
+            href={item.link.text || item.link.url || ""}
             active={active}
             setActive={setActive}
             textColor={scrolled ? "text-black" : "text-white"}

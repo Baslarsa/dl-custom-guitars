@@ -12,13 +12,19 @@ export type ImageAndTextProps = SliceComponentProps<Content.ImageAndTextSlice>;
  */
 const ImageAndText = ({ slice }: ImageAndTextProps): JSX.Element => {
   return (
-    <ImageAndTextComponent
-      image={slice.primary.image}
-      title={slice.primary.title}
-      text={slice.primary.text}
-      buttons={slice.primary.ctas}
-      inverted={slice.variation === "reverse"}
-    />
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+      className="my-12"
+    >
+      <ImageAndTextComponent
+        image={slice.primary.image}
+        title={slice.primary.title}
+        text={slice.primary.text}
+        buttons={slice.primary.ctas}
+        inverted={slice.variation === "reverse"}
+      />
+    </section>
   );
 };
 

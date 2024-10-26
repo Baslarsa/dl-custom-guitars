@@ -20,14 +20,20 @@ const ParallaxImageGrid = ({ slice }: ParallaxImageGridProps): JSX.Element => {
     .filter(Boolean);
 
   return (
-    <Container>
-      <div className="flex justify-center">
-        <SectionTitle title={slice.primary.title} />
-      </div>
-      <div className="flex justify-center">
-        {images && <ParallaxScroll images={images} />}
-      </div>
-    </Container>
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+      className="my-12"
+    >
+      <Container>
+        <div className="flex justify-center">
+          <SectionTitle title={slice.primary.title} />
+        </div>
+        <div className="flex justify-center">
+          {images && <ParallaxScroll images={images} />}
+        </div>
+      </Container>
+    </section>
   );
 };
 

@@ -43,9 +43,9 @@ export default async function RootLayout({
           <Header menuItems={menuItems} />
           <div className="h-[90px]"></div>
           {children}
+          <PrismicPreview repositoryName={config.repositoryName} />
           <Footer footerData={footerLinks} />
         </div>
-        <PrismicPreview repositoryName={config.repositoryName} />
       </body>
     </html>
   );

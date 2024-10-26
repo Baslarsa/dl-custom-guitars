@@ -17,6 +17,7 @@ import ButtonGroup, {
   ButtonGroupArray,
   buttonGroupArrayToButtonItems,
 } from "./buttons/ButtonGroup";
+import RichText from "./typography/RichText";
 const ImageAndTextComponent = ({
   image,
   title,
@@ -73,7 +74,7 @@ const ImageAndTextComponent = ({
             }}
           >
             <div>
-              <PrismicRichText field={text} />
+              <RichText text={text} />
               {buttons && <ButtonGroup buttons={ctas} dark />}
             </div>
           </motion.div>

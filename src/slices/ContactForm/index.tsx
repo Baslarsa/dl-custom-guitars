@@ -12,10 +12,16 @@ export type ContactFormProps = SliceComponentProps<Content.ContactFormSlice>;
  */
 const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
   return (
-    <ContactFormComponent
-      title={slice.primary.title}
-      description={slice.primary.description}
-    />
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+      className="my-12"
+    >
+      <ContactFormComponent
+        title={slice.primary.title}
+        description={slice.primary.description}
+      />
+    </section>
   );
 };
 

@@ -18,6 +18,7 @@ import Link from "next/link";
 import ButtonGroup, {
   buttonGroupArrayToButtonItems,
 } from "./buttons/ButtonGroup";
+import RichText from "./typography/RichText";
 
 const HomePageHero = ({
   text,
@@ -84,12 +85,6 @@ const HeroText = ({
   description: KeyTextField;
   flipText: string[];
 }) => {
-  const isMobile = useIsMobile();
-  const components = {
-    heading1: ({ children }: { children: React.ReactNode }) => (
-      <h1 className="text-white text-5xl font-semibold">{children}</h1>
-    ),
-  };
   return (
     <div
       className={classNames("relative z-1 flex flex-col gap-2 items-center")}
@@ -98,7 +93,7 @@ const HeroText = ({
         words={flipText || [""]}
         className="text-white text-5xl font-semibold"
       />
-      <PrismicRichText field={text} components={components} />
+      <RichText text={text} />
       <p>{description}</p>
     </div>
   );

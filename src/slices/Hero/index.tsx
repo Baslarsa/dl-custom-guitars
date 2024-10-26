@@ -12,13 +12,18 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice>;
  */
 const Hero = ({ slice }: HeroProps): JSX.Element => {
   return (
-    <HomePageHero
-      text={slice.primary.hero_text}
-      description={slice.primary.hero_description}
-      flipText={slice.primary.flip_words?.split(",") || []}
-      ctas={slice.primary.hero_cta}
-      image={slice.primary.hero_image}
-    />
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
+      <HomePageHero
+        text={slice.primary.hero_text}
+        description={slice.primary.hero_description}
+        flipText={slice.primary.flip_words?.split(",") || []}
+        ctas={slice.primary.hero_cta}
+        image={slice.primary.hero_image}
+      />
+    </section>
   );
 };
 

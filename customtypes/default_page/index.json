@@ -31,6 +31,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "perks": {
+              "type": "SharedSlice"
+            },
+            "page_title": {
+              "type": "SharedSlice"
+            },
             "parallax_image_grid": {
               "type": "SharedSlice"
             },

@@ -6,6 +6,11 @@
   scroll-behavior: smooth;
 }
 
+p {
+  line-height: 1.6rem;
+  letter-spacing: 0.025rem;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

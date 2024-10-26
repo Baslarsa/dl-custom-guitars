@@ -5,6 +5,8 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type DefaultPageDocumentDataSlicesSlice =
+  | PerksSlice
+  | PageTitleSlice
   | ParallaxImageGridSlice
   | ContactFormSlice
   | ImageAndTextSlice
@@ -170,6 +172,8 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | PageTitleSlice
+  | PerksSlice
   | ContactFormSlice
   | ParallaxImageGridSlice
   | DividerSlice
@@ -691,6 +695,61 @@ export type ImageAndTextSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Primary content in *PageTitle → Default → Primary*
+ */
+export interface PageTitleSliceDefaultPrimary {
+  /**
+   * Title field in *PageTitle → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page_title.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Sub Title field in *PageTitle → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: page_title.default.primary.sub_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  sub_title: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for PageTitle Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageTitleSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PageTitleSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PageTitle*
+ */
+type PageTitleSliceVariation = PageTitleSliceDefault;
+
+/**
+ * PageTitle Shared Slice
+ *
+ * - **API ID**: `page_title`
+ * - **Description**: PageTitle
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PageTitleSlice = prismic.SharedSlice<
+  "page_title",
+  PageTitleSliceVariation
+>;
+
+/**
  * Item in *ParallaxImageGrid → Default → Primary → Images*
  */
 export interface ParallaxImageGridSliceDefaultPrimaryImagesItem {
@@ -761,6 +820,93 @@ export type ParallaxImageGridSlice = prismic.SharedSlice<
   "parallax_image_grid",
   ParallaxImageGridSliceVariation
 >;
+
+/**
+ * Item in *Perks → Default → Primary → Perk*
+ */
+export interface PerksSliceDefaultPrimaryPerkItem {
+  /**
+   * Title field in *Perks → Default → Primary → Perk*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: perks.default.primary.perk[].title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Description field in *Perks → Default → Primary → Perk*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: perks.default.primary.perk[].description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Icon field in *Perks → Default → Primary → Perk*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: perks.default.primary.perk[].icon
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  icon: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Perks → Default → Primary*
+ */
+export interface PerksSliceDefaultPrimary {
+  /**
+   * Title field in *Perks → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: perks.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Perk field in *Perks → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: perks.default.primary.perk[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  perk: prismic.GroupField<Simplify<PerksSliceDefaultPrimaryPerkItem>>;
+}
+
+/**
+ * Default variation for Perks Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PerksSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PerksSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Perks*
+ */
+type PerksSliceVariation = PerksSliceDefault;
+
+/**
+ * Perks Shared Slice
+ *
+ * - **API ID**: `perks`
+ * - **Description**: Perks
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PerksSlice = prismic.SharedSlice<"perks", PerksSliceVariation>;
 
 /**
  * Item in *TitleAndText → Default → Primary → CTA*
@@ -918,11 +1064,20 @@ declare module "@prismicio/client" {
       ImageAndTextSliceVariation,
       ImageAndTextSliceDefault,
       ImageAndTextSliceReverse,
+      PageTitleSlice,
+      PageTitleSliceDefaultPrimary,
+      PageTitleSliceVariation,
+      PageTitleSliceDefault,
       ParallaxImageGridSlice,
       ParallaxImageGridSliceDefaultPrimaryImagesItem,
       ParallaxImageGridSliceDefaultPrimary,
       ParallaxImageGridSliceVariation,
       ParallaxImageGridSliceDefault,
+      PerksSlice,
+      PerksSliceDefaultPrimaryPerkItem,
+      PerksSliceDefaultPrimary,
+      PerksSliceVariation,
+      PerksSliceDefault,
       TitleAndTextSlice,
       TitleAndTextSliceDefaultPrimaryCtaItem,
       TitleAndTextSliceDefaultPrimary,

@@ -12,12 +12,17 @@ export type TitleAndTextProps = SliceComponentProps<Content.TitleAndTextSlice>;
  */
 const TitleAndText = ({ slice }: TitleAndTextProps): JSX.Element => {
   return (
-    <TitleAndTextComponent
-      title={slice.primary.title}
-      category={slice.primary.category}
-      text={slice.primary.section_text}
-      ctas={slice.primary.cta}
-    />
+    <section
+      data-slice-type={slice.slice_type}
+      data-slice-variation={slice.variation}
+    >
+      <TitleAndTextComponent
+        title={slice.primary.title}
+        category={slice.primary.category}
+        text={slice.primary.section_text}
+        ctas={slice.primary.cta}
+      />
+    </section>
   );
 };
 
