@@ -1,5 +1,5 @@
 "use client";
-import useIsMobile from "@/app/lib/hooks/useIsMobile";
+import { isMobile } from "react-device-detect";
 import classNames from "classnames";
 
 const Container = ({
@@ -9,7 +9,6 @@ const Container = ({
   className?: string;
   children: React.ReactNode;
 }) => {
-  const isMobile = useIsMobile();
   return (
     <div
       className={classNames(isMobile ? "px-2" : "px-4", "w-full", className)}

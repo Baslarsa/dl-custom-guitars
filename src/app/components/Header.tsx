@@ -9,12 +9,11 @@ import {
   MenuDocumentDataMenuLinkItem,
   Simplify,
 } from "../../../prismicio-types";
-import useIsMobile from "../lib/hooks/useIsMobile";
-import HoverButton from "./buttons/HoverButton";
 import Container from "./layout/Container";
 import Instagram from "./layout/Instagram";
 import SiteLogo from "./svg_components/SiteLogo";
 import Link from "next/link";
+import { isMobile } from "react-device-detect";
 
 type MenuItem = {
   name: string;
@@ -31,7 +30,6 @@ const Header = ({
 }: {
   menuItems: GroupField<Simplify<MenuDocumentDataMenuLinkItem>>;
 }) => {
-  const isMobile = useIsMobile();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);

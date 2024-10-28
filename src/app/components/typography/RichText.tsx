@@ -1,10 +1,8 @@
 "use client";
 import { RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
-import RevealParagraph from "./RevealParagraph";
-import Link from "next/link";
 import classNames from "classnames";
-import useIsMobile from "@/app/lib/hooks/useIsMobile";
+import { isMobile } from "react-device-detect";
 
 const RichText = ({
   text,
@@ -13,7 +11,6 @@ const RichText = ({
   text: RichTextField;
   className?: string;
 }) => {
-  const isMobile = useIsMobile();
   const components = {
     heading1: ({ children }: { children: React.ReactNode }) => (
       <h1 className={classNames("text-5xl font-bold pb-6", className)}>

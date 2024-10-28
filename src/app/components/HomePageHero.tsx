@@ -1,4 +1,5 @@
 "use client";
+import { FlipWords } from "@/components/ui/flip-words";
 import {
   Content,
   GroupField,
@@ -6,18 +7,13 @@ import {
   KeyTextField,
   RichTextField,
 } from "@prismicio/client";
-import { PrismicImage, PrismicRichText } from "@prismicio/react";
+import { PrismicImage } from "@prismicio/react";
 import classNames from "classnames";
-import useIsMobile from "../lib/hooks/useIsMobile";
-import Container from "./layout/Container";
-import { FlipWords } from "@/components/ui/flip-words";
 import { Simplify } from "../../../prismicio-types";
-import HoverButton from "./buttons/HoverButton";
-import { useRouter } from "next/router";
-import Link from "next/link";
 import ButtonGroup, {
   buttonGroupArrayToButtonItems,
 } from "./buttons/ButtonGroup";
+import Container from "./layout/Container";
 import RichText from "./typography/RichText";
 
 const HomePageHero = ({
