@@ -10,5 +10,7 @@ export const components = {
   page_title: dynamic(() => import("./PageTitle")),
   parallax_image_grid: dynamic(() => import("./ParallaxImageGrid")),
   perks: dynamic(() => import("./Perks")),
+  product: dynamic(() => import("./Product")),
+  products: dynamic(() => import("./Products")),
   title_and_text: dynamic(() => import("./TitleAndText")),
 };

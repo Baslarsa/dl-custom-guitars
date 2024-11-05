@@ -1,0 +1,49 @@
+{
+  "format": "custom",
+  "id": "products_page",
+  "label": "Products page",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "Text",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "seo_title": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Title",
+          "placeholder": ""
+        }
+      },
+      "seo_description": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Description",
+          "placeholder": ""
+        }
+      },
+      "products": {
+        "type": "Group",
+        "config": {
+          "label": "Products",
+          "repeat": true,
+          "fields": {
+            "products": {
+              "type": "Link",
+              "config": {
+                "label": "Products",
+                "select": "document",
+                "customtypes": ["product"]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

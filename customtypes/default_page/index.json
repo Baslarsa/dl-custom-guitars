@@ -31,6 +31,12 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "product": {
+              "type": "SharedSlice"
+            },
+            "products": {
+              "type": "SharedSlice"
+            },
             "perks": {
               "type": "SharedSlice"
             },
