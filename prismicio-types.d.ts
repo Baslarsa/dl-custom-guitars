@@ -75,16 +75,6 @@ export type DefaultPageDocument<Lang extends string = string> =
  */
 export interface FooterDocumentDataLinksItem {
   /**
-   * Title field in *Footer → Links*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.links[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
    * Link field in *Footer → Links*
    *
    * - **Field Type**: Link
@@ -99,16 +89,6 @@ export interface FooterDocumentDataLinksItem {
  * Item in *Footer → Social*
  */
 export interface FooterDocumentDataSocialItem {
-  /**
-   * Title field in *Footer → Social*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: footer.social[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
   /**
    * Link field in *Footer → Social*
    *
@@ -643,16 +623,6 @@ export type DividerSlice = prismic.SharedSlice<
  */
 export interface HeroSliceDefaultPrimaryHeroCtaItem {
   /**
-   * Title field in *Hero → Default → Primary → Hero CTA*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: hero.default.primary.hero_cta[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
-  /**
    * Link field in *Hero → Default → Primary → Hero CTA*
    *
    * - **Field Type**: Link
@@ -749,16 +719,6 @@ export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
  * Item in *ImageAndText → Default → Primary → CTAs*
  */
 export interface ImageAndTextSliceDefaultPrimaryCtasItem {
-  /**
-   * Title field in *ImageAndText → Default → Primary → CTAs*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: image_and_text.default.primary.ctas[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
   /**
    * Link field in *ImageAndText → Default → Primary → CTAs*
    *
@@ -1347,16 +1307,6 @@ export type ProductsSlice = prismic.SharedSlice<
  * Item in *TitleAndText → Default → Primary → CTA*
  */
 export interface TitleAndTextSliceDefaultPrimaryCtaItem {
-  /**
-   * Title field in *TitleAndText → Default → Primary → CTA*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: title_and_text.default.primary.cta[].title
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  title: prismic.KeyTextField;
-
   /**
    * Link field in *TitleAndText → Default → Primary → CTA*
    *

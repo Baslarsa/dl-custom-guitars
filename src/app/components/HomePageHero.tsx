@@ -10,11 +10,10 @@ import {
 import { PrismicImage } from "@prismicio/react";
 import classNames from "classnames";
 import { Simplify } from "../../../prismicio-types";
-import ButtonGroup, {
-  buttonGroupArrayToButtonItems,
-} from "./buttons/ButtonGroup";
+
 import Container from "./layout/Container";
 import RichText from "./typography/RichText";
+import ButtonGroup from "./buttons/ButtonGroup";
 
 const HomePageHero = ({
   text,
@@ -29,7 +28,7 @@ const HomePageHero = ({
   image: ImageField;
   ctas: GroupField<Simplify<Content.HeroSliceDefaultPrimaryHeroCtaItem>>;
 }) => {
-  const buttons = buttonGroupArrayToButtonItems(ctas);
+  const buttons = ctas.map((cta) => cta.link);
   return (
     <div
       style={{ backgroundPosition: "50% 35%" }}

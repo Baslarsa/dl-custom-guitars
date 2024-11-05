@@ -1,11 +1,11 @@
+import { LinkField } from "@prismicio/client";
+import { PrismicNextLink } from "@prismicio/next";
 import classNames from "classnames";
-import Link from "next/link";
 import React from "react";
 
 type ButtonProps = {
   onClick?: () => void;
-  href?: string;
-  title: string;
+  link?: LinkField;
   className?: string;
   ariaLabel?: string;
   dark?: boolean;
@@ -13,13 +13,12 @@ type ButtonProps = {
 
 const HoverButton: React.FC<ButtonProps> = ({
   onClick,
-  title,
-  href,
+  link,
   className = "",
   ariaLabel,
   dark = false,
 }) => {
-  const isLink = Boolean(href);
+  const isLink = Boolean(link);
 
   return (
     <div
@@ -34,19 +33,12 @@ const HoverButton: React.FC<ButtonProps> = ({
       aria-label={ariaLabel}
       onClick={onClick}
     >
-      {isLink ? (
-        <Link
-          href={href || "/"}
+      {isLink && (
+        <PrismicNextLink
+          field={link}
           className="btn-content"
           rel="noopener noreferrer"
-          onClick={(e) => e.stopPropagation()} // Avoid triggering the container onClick
-        >
-          {title}
-        </Link>
-      ) : (
-        <button className="btn-content" type="button">
-          {title}
-        </button>
+        />
       )}
     </div>
   );

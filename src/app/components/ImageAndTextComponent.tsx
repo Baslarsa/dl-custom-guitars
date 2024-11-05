@@ -13,10 +13,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Container from "./layout/Container";
 import { Simplify } from "../../../prismicio-types";
-import ButtonGroup, {
-  ButtonGroupArray,
-  buttonGroupArrayToButtonItems,
-} from "./buttons/ButtonGroup";
+import ButtonGroup from "./buttons/ButtonGroup";
 import RichText from "./typography/RichText";
 const ImageAndTextComponent = ({
   image,
@@ -31,11 +28,12 @@ const ImageAndTextComponent = ({
   title: KeyTextField;
   text: RichTextField;
   inverted?: boolean;
-  buttons?: ButtonGroupArray;
+  buttons?: GroupField<
+    Simplify<Content.ImageAndTextSliceDefaultPrimaryCtasItem>
+  >;
 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const ctas = buttons && buttonGroupArrayToButtonItems(buttons);
   return (
     <Container>
       <div
@@ -75,7 +73,12 @@ const ImageAndTextComponent = ({
           >
             <div>
               <RichText text={text} />
-              {buttons && <ButtonGroup buttons={ctas} dark />}
+              {buttons && (
+                <ButtonGroup
+                  buttons={buttons.map((button) => button.link)}
+                  dark
+                />
+              )}
             </div>
           </motion.div>
         </div>

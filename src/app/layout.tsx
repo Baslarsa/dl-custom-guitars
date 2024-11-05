@@ -7,7 +7,7 @@ import { PrismicPreview } from "@prismicio/next";
 import config from "../../slicemachine.config.json";
 import { createClient } from "@/prismicio";
 import Footer from "./components/layout/Footer";
-
+import { GoogleTagManager } from "@next/third-parties/google";
 const poppins = Poppins({
   weight: ["300", "400", "500", "700"],
   subsets: ["latin"],
@@ -29,6 +29,7 @@ export default async function RootLayout({
   const footerRequest = await client.getSingle("footer");
   const menuItems = request.results[0].data.menu_link;
   const footerLinks = footerRequest.data;
+  const socialLinks = footerLinks.social;
   return (
     <html lang="en" className="dark">
       <head>
@@ -40,13 +41,16 @@ export default async function RootLayout({
       </head>
       <body className={classNames(poppins.variable, "bg-black")}>
         <div className="font-poppins font-thin">
-          <Header menuItems={menuItems} />
-          <div className="h-[90px]"></div>
+          <Header menuItems={menuItems} socialLinks={socialLinks} />
+          <div className=" md:h-20 h-14"></div>
           {children}
           <PrismicPreview repositoryName={config.repositoryName} />
           <Footer footerData={footerLinks} />
         </div>
       </body>
+      {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
+        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+      )}
     </html>
   );
 }

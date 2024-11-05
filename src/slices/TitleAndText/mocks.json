@@ -40,14 +40,6 @@
 										"text": "window"
 									}
 								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "change",
-									"type": "Text"
-								}
 							]
 						]
 					}

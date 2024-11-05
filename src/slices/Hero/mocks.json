@@ -33,14 +33,6 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "tired",
-									"type": "Text"
-								}
-							],
-							[
 								"link",
 								{
 									"__TYPE__": "LinkContent",

@@ -12,13 +12,6 @@
           "label": "Links",
           "repeat": true,
           "fields": {
-            "title": {
-              "type": "Text",
-              "config": {
-                "label": "Title",
-                "placeholder": ""
-              }
-            },
             "link": {
               "type": "Link",
               "config": {
@@ -38,13 +31,6 @@
           "label": "Social",
           "repeat": true,
           "fields": {
-            "title": {
-              "type": "Text",
-              "config": {
-                "label": "Title",
-                "placeholder": ""
-              }
-            },
             "link": {
               "type": "Link",
               "config": {

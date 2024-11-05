@@ -58,14 +58,6 @@
 										"text": "speak"
 									}
 								}
-							],
-							[
-								"title",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "larger",
-									"type": "Text"
-								}
 							]
 						]
 					}
