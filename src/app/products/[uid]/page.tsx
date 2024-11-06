@@ -6,7 +6,7 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
+  const client = createClient({}, false);
   const page = await client.getSingle("product");
 
   return {

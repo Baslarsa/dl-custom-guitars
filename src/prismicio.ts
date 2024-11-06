@@ -43,7 +43,7 @@ export const createClient = (
     routes,
     fetchOptions: cache
       ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-      : { next: { revalidate: 5 } },
+      : { next: { tags: ["prismic"], revalidate: 5 } },
     ...config,
   });
 
