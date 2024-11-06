@@ -6,6 +6,7 @@ type Props = {
   params: Promise<{ uid: string; title: string; description: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
+export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
