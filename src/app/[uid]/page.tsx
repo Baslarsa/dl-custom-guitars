@@ -9,7 +9,7 @@ type Props = {
 export const revalidate = 60; // Revalidate every 60 seconds
 
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
+  const client = createClient({}, false);
   const page = await client.getSingle("default_page");
 
   return {

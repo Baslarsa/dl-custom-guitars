@@ -35,13 +35,15 @@ const routes: prismic.ClientConfig["routes"] = [
  *
  * @param config - Configuration for the Prismic client.
  */
-export const createClient = (config: prismicNext.CreateClientConfig = {}) => {
+export const createClient = (
+  config: prismicNext.CreateClientConfig = {},
+  cache = true
+) => {
   const client = prismic.createClient(repositoryName, {
     routes,
-    fetchOptions:
-      process.env.NODE_ENV === "production"
-        ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-        : { next: { revalidate: 5 } },
+    fetchOptions: cache
+      ? { next: { tags: ["prismic"] }, cache: "force-cache" }
+      : { next: { revalidate: 5 } },
     ...config,
   });
 
