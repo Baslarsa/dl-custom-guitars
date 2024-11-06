@@ -6,11 +6,7 @@ type Props = {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata(
-  { params }: Props,
-  parent: ResolvingMetadata
-): Promise<Metadata> {
-  const uid = (await params).uid;
+export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 
   const page = await client.getSingle("products_page", {
@@ -24,13 +20,9 @@ export async function generateMetadata(
   return {
     title: page.data.seo_title,
     description: page.data.seo_description,
-    openGraph: {
-      title: page.data.seo_title as string,
-      description: page.data.seo_description as string,
-    },
   };
 }
-export default async function Page({ params, searchParams }: Props) {
+export default async function Page() {
   const client = createClient();
 
   const request = await client.getSingle("products_page", {

@@ -7,6 +7,7 @@ import {
   ProductDocumentData,
   Simplify,
 } from "../../../prismicio-types";
+import { PrismicNextImage } from "@prismicio/next";
 
 /**
  * Props for `Product`.
@@ -40,15 +41,14 @@ const Product = ({
 
               <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-rows-3 lg:gap-8">
                 {product.images?.map((item) => (
-                  <img
+                  <PrismicNextImage
                     key={item.image.url}
-                    alt={item.image.alt as string}
-                    src={item.image.url as string}
+                    field={item.image}
                     className={classNames(
                       product.images[0]?.image.id === item.image.id
                         ? "lg:col-span-2 lg:row-span-1"
                         : "hidden lg:block",
-                      "rounded-lg max-h-[600px] w-full object-cover object-center"
+                      "rounded-lg w-full object-cover object-center"
                     )}
                   />
                 ))}

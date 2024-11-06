@@ -8,7 +8,7 @@ export async function generateMetadata(): Promise<Metadata> {
   const page = await client.getSingle("home_page");
 
   return {
-    title: "Home page",
+    title: page.data.seo_title,
     description: page.data.seo_description,
   };
 }
