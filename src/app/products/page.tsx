@@ -7,7 +7,7 @@ type Props = {
 };
 
 export async function generateMetadata(): Promise<Metadata> {
-  const client = createClient();
+  const client = createClient({}, false);
 
   const page = await client.getSingle("products_page", {
     fetchLinks: [
@@ -23,7 +23,7 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 export default async function Page() {
-  const client = createClient();
+  const client = createClient({}, false);
 
   const request = await client.getSingle("products_page", {
     fetchLinks: [
