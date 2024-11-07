@@ -1,6 +1,7 @@
 import { createClient } from "@/prismicio";
 import Product from "@/slices/Product";
 import { Metadata } from "next";
+import Head from "next/head";
 type Props = {
   params: Promise<{ uid: string; title: string; description: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -19,5 +20,23 @@ export default async function Page({ params, searchParams }: Props) {
 
   const page = await client.getByUID("product", (await params).uid);
 
-  return <Product data={page.data} />;
+  const productSchema = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: page.data.title,
+    image: page.data.images[0]?.image.url,
+    description: page.data.description,
+  };
+
+  return (
+    <>
+      <Head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+        />
+      </Head>
+      <Product data={page.data} />
+    </>
+  );
 }
