@@ -41,8 +41,7 @@ const HomePageHero = ({
           imgixParams={{
             fit: "fill",
             fm: "jpg",
-            q: 90,
-            auto: ["format", "compress"],
+            q: 20,
           }}
         />
       </div>
