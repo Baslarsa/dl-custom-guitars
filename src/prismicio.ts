@@ -42,8 +42,8 @@ export const createClient = (
   const client = prismic.createClient(repositoryName, {
     routes,
     fetchOptions: cache
-      ? { next: { tags: ["prismic"] }, cache: "force-cache" }
-      : { next: { tags: ["prismic"], revalidate: 5 } },
+      ? { next: { tags: ["prismic"], revalidate: 60 } } // ISR every 60 seconds
+      : { next: { tags: ["prismic"] }, cache: "no-store" }, // No caching for dynamic content
     ...config,
   });
 
