@@ -21,12 +21,20 @@ const routes: prismic.ClientConfig["routes"] = [
     path: "/:uid",
   },
   {
+    type: "article",
+    path: "/articles/:uid",
+  },
+  {
     type: "products_page",
     path: "/products",
   },
   {
     type: "product_page",
     path: "/products/:uid",
+  },
+  {
+    type: "articles_page",
+    path: "/articles",
   },
 ];
 
@@ -42,8 +50,8 @@ export const createClient = (
   const client = prismic.createClient(repositoryName, {
     routes,
     fetchOptions: cache
-      ? { next: { tags: ["prismic"], revalidate: 60 } } // ISR every 60 seconds
-      : { next: { tags: ["prismic"] }, cache: "no-store" }, // No caching for dynamic content
+      ? { next: { tags: ["prismic"], revalidate: 60 } }
+      : { next: { tags: ["prismic"] }, cache: "no-store" },
     ...config,
   });
 

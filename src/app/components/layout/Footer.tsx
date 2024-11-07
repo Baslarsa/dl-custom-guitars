@@ -10,7 +10,6 @@ const Footer = ({ footerData }: { footerData: FooterDocumentData }) => {
     name: "DL Custom Guitars",
     description: "Custom-made acoustic guitars handcrafted in Vasa, Finland.",
     url: "https://dlcustomguitars.com",
-
     openingHours: "Mo-Fr 09:00-17:00",
     image:
       "https://www.dlcustomguitars.com/_next/image?url=https%3A%2F%2Fimages.prismic.io%2Fdlgutars%2FZxeTZYF3NbkBX1Y5_head-dl.jpg%3Fauto%3Dformat%2Ccompress%3Fauto%3Dcompress%2Cformat&w=828&q=75",
@@ -42,7 +41,7 @@ const Footer = ({ footerData }: { footerData: FooterDocumentData }) => {
                 key={item.link.text}
                 className="text-gray-600 hover:text-gray-900"
               >
-                {item.link.text} {/* Display the text of each link */}
+                {item.link.text}
               </PrismicNextLink>
             ))}
           </nav>
@@ -53,14 +52,14 @@ const Footer = ({ footerData }: { footerData: FooterDocumentData }) => {
                 <PrismicNextImage
                   field={item.icon}
                   height={24}
-                  width={24} // Explicitly set width and height
+                  width={24}
                   className={classNames("h-6 w-6 transition-all")}
                 />
               </PrismicNextLink>
             ))}
           </div>
           <p className="mt-10 text-center text-sm/6 text-gray-600">
-            &copy; 2024 DL Custom Guitars, Inc. All rights reserved.
+            &copy; 2024 DL Custom Guitars. All rights reserved.
           </p>
         </div>
       </footer>

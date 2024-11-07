@@ -4,6 +4,181 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
+type ArticleDocumentDataSlicesSlice =
+  | PageTitleSlice
+  | ImageAndTextSlice
+  | DividerSlice
+  | ContactFormSlice;
+
+/**
+ * Content for Article documents
+ */
+interface ArticleDocumentData {
+  /**
+   * SEO Title field in *Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.seo_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_title: prismic.KeyTextField;
+
+  /**
+   * SEO Description field in *Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.seo_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_description: prismic.KeyTextField;
+
+  /**
+   * Title field in *Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Sub title field in *Article*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.sub_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  sub_title: prismic.RichTextField;
+
+  /**
+   * Body text field in *Article*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.body_text
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  body_text: prismic.RichTextField;
+
+  /**
+   * Category field in *Article*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.category
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+
+  /**
+   * Image field in *Article*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Article*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: article.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ArticleDocumentDataSlicesSlice>;
+}
+
+/**
+ * Article document from Prismic
+ *
+ * - **API ID**: `article`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArticleDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ArticleDocumentData>,
+    "article",
+    Lang
+  >;
+
+type ArticlesPageDocumentDataSlicesSlice =
+  | TitleAndTextSlice
+  | ContactFormSlice
+  | PageTitleSlice
+  | DividerSlice;
+
+/**
+ * Content for Articles Page documents
+ */
+interface ArticlesPageDocumentData {
+  /**
+   * SEO Title field in *Articles Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles_page.seo_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_title: prismic.KeyTextField;
+
+  /**
+   * SEO Description field in *Articles Page*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles_page.seo_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_description: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Articles Page*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: articles_page.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ArticlesPageDocumentDataSlicesSlice>;
+}
+
+/**
+ * Articles Page document from Prismic
+ *
+ * - **API ID**: `articles_page`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ArticlesPageDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ArticlesPageDocumentData>,
+    "articles_page",
+    Lang
+  >;
+
 type DefaultPageDocumentDataSlicesSlice =
   | ProductSlice
   | ProductsSlice
@@ -525,6 +700,8 @@ export type ProductsPageDocument<Lang extends string = string> =
   >;
 
 export type AllDocumentTypes =
+  | ArticleDocument
+  | ArticlesPageDocument
   | DefaultPageDocument
   | FooterDocument
   | HomePageDocument
@@ -1414,6 +1591,12 @@ declare module "@prismicio/client" {
 
   namespace Content {
     export type {
+      ArticleDocument,
+      ArticleDocumentData,
+      ArticleDocumentDataSlicesSlice,
+      ArticlesPageDocument,
+      ArticlesPageDocumentData,
+      ArticlesPageDocumentDataSlicesSlice,
       DefaultPageDocument,
       DefaultPageDocumentData,
       DefaultPageDocumentDataSlicesSlice,

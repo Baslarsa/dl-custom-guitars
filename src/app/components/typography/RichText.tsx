@@ -3,6 +3,7 @@ import useIsMobile from "@/hooks/useIsMobile";
 import { RichTextField } from "@prismicio/client";
 import { PrismicRichText } from "@prismicio/react";
 import classNames from "classnames";
+import { strong } from "framer-motion/client";
 
 const RichText = ({
   text,
@@ -17,6 +18,14 @@ const RichText = ({
       <h1 className={classNames("text-5xl font-bold pb-6", className)}>
         {children}
       </h1>
+    ),
+    heading5: ({ children }: { children: React.ReactNode }) => (
+      <h5 className={classNames("text-2xl font-thin pb-6", className)}>
+        {children}
+      </h5>
+    ),
+    strong: ({ children }: { children: React.ReactNode }) => (
+      <strong className="font-semibold">{children}</strong>
     ),
     paragraph: ({ children }: { children: React.ReactNode }) => (
       <p className="text-white">{children}</p>
