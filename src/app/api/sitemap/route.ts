@@ -22,7 +22,10 @@ export async function GET(req: NextRequest) {
   ];
 
   const pages = pagesFromPrismic.map((page) => {
-    const url = page.uid === "home" ? `${baseUrl}` : `${baseUrl}/${page.uid}`;
+    const baseUrlModified =
+      page.type === "product" ? `${baseUrl}/products` : baseUrl;
+    const url =
+      page.uid === "home" ? `${baseUrl}` : `${baseUrlModified}/${page.uid}`;
     return `
       <url>
         <loc>${url}</loc>
