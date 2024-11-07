@@ -6,7 +6,7 @@ import { PrismicPreview } from "@prismicio/next";
 import config from "../../slicemachine.config.json";
 import { createClient } from "@/prismicio";
 import Footer from "./components/layout/Footer";
-import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "700"],
@@ -45,7 +45,10 @@ export default async function RootLayout({
         </div>
       </body>
       {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS && (
-        <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+        <>
+          <GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+          <GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
+        </>
       )}
     </html>
   );
