@@ -5,7 +5,6 @@ import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import classNames from "classnames";
 import { useMotionValueEvent, useScroll } from "framer-motion";
 import { useEffect, useState } from "react";
-import { isMobile } from "react-device-detect";
 import {
   FooterDocumentDataSocialItem,
   MenuDocumentDataMenuLinkItem,
@@ -13,6 +12,7 @@ import {
 } from "../../../prismicio-types";
 import Container from "./layout/Container";
 import SiteLogo from "./svg_components/SiteLogo";
+import useIsMobile from "@/hooks/useIsMobile";
 
 const MenuIcon = ({
   onClick,
@@ -68,6 +68,7 @@ const Header = ({
   menuItems: GroupField<Simplify<MenuDocumentDataMenuLinkItem>>;
   socialLinks: GroupField<Simplify<FooterDocumentDataSocialItem>>;
 }) => {
+  const isMobile = useIsMobile();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const { scrollY } = useScroll();
   const [scrolled, setScrolled] = useState(false);

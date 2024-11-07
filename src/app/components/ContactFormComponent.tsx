@@ -1,16 +1,11 @@
 "use client";
 import React, { useReducer } from "react";
 import { cn } from "@/lib/utils";
-import {
-  IconBrandGithub,
-  IconBrandGoogle,
-  IconBrandOnlyfans,
-} from "@tabler/icons-react";
+
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { TextArea } from "@/components/ui/text-area";
 import { KeyTextField, RichTextField } from "@prismicio/client";
-import { PrismicRichText } from "@prismicio/react";
 import SectionTitle from "./typography/SectionTitle";
 import useSendEmail from "@/hooks/useSendEmail";
 import RichText from "./typography/RichText";
