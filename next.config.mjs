@@ -3,8 +3,8 @@ const nextConfig = {
   async redirects() {
     return [
       {
-        source: "/(.*)",
-        has: [{ type: "host", value: "http://dlcustomguitars.com" }],
+        source: "/:path*",
+        has: [{ type: "host", value: "dlcustomguitars.com" }],
         destination: "https://dlcustomguitars.com/:path*",
         permanent: true,
       },
