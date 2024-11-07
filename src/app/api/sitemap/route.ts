@@ -1,16 +1,14 @@
-// pages/api/sitemap/route.ts
+// src/app/api/sitemap/route.ts
 
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest } from "next/server";
 import { createClient } from "@/prismicio";
 
-export default async function sitemap(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export async function GET(req: NextRequest) {
   const baseUrl = process.env.SITE_URL || "https://dlcustomguitars.com";
+
+  // Initialize Prismic client
   const client = createClient();
 
-  // Fetch data from Prismic for each type of page
   const homePage = await client.getAllByType("home_page");
   const defaultPages = await client.getAllByType("default_page");
   const productPages = await client.getAllByType("product");
@@ -23,7 +21,6 @@ export default async function sitemap(
     ...productsPage,
   ];
 
-  // Combine static and Prismic pages
   const pages = pagesFromPrismic.map((page) => {
     const url = page.uid === "home" ? `${baseUrl}` : `${baseUrl}/${page.uid}`;
     return `
@@ -36,13 +33,14 @@ export default async function sitemap(
     `;
   });
 
-  // Return the sitemap XML response
-  res.setHeader("Content-Type", "application/xml");
-  res.write(
-    `<?xml version="1.0" encoding="UTF-8"?>
-     <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-       ${pages.join("")}
-     </urlset>`
-  );
-  res.end();
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+      ${pages.join("")}
+    </urlset>`;
+
+  return new Response(sitemap, {
+    headers: {
+      "Content-Type": "application/xml",
+    },
+  });
 }

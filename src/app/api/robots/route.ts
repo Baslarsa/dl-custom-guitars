@@ -1,11 +1,17 @@
-import { NextApiRequest, NextApiResponse } from "next";
+// src/app/api/robots/route.ts
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  res.setHeader("Content-Type", "text/plain");
-  res.write(`User-agent: *
+import { NextRequest } from "next/server";
+
+export function GET(req: NextRequest) {
+  const robotsTxt = `User-agent: *
 Disallow:
 
 Sitemap: ${process.env.SITE_URL || "https://dlcustomguitars.com"}/sitemap.xml
-`);
-  res.end();
+`;
+
+  return new Response(robotsTxt, {
+    headers: {
+      "Content-Type": "text/plain",
+    },
+  });
 }
