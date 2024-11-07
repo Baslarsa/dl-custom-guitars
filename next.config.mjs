@@ -10,6 +10,20 @@ const nextConfig = {
       },
     ];
   },
+  async headers() {
+    return [
+      {
+        source: "/(.*)",
+        headers: [
+          {
+            key: "Content-Security-Policy",
+            value:
+              "default-src 'self'; frame-src https://dlguitars.prismic.io; script-src 'self' https://static.cdn.prismic.io; connect-src 'self' https://dlguitars.prismic.io",
+          },
+        ],
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
