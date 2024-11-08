@@ -20,7 +20,10 @@ export async function GET(req: NextRequest) {
     ...productPages,
     ...productsPage,
   ];
-
+  const formatDate = (date: string) => {
+    const d = new Date(date);
+    return d.toISOString().split("T")[0]; // Outputs YYYY-MM-DD
+  };
   const pages = pagesFromPrismic.map((page) => {
     const baseUrlModified =
       page.type === "product" ? `${baseUrl}/products` : baseUrl;
@@ -29,7 +32,7 @@ export async function GET(req: NextRequest) {
     return `
       <url>
         <loc>${url}</loc>
-        <lastmod>${page.last_publication_date}</lastmod>
+        <lastmod>${formatDate(page.last_publication_date)}</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
       </url>
