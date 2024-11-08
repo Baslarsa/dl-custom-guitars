@@ -8,6 +8,7 @@ import {
   Simplify,
 } from "../../../prismicio-types";
 import { PrismicNextImage } from "@prismicio/next";
+import RichText from "@/app/components/typography/RichText";
 
 /**
  * Props for `Product`.
@@ -60,7 +61,7 @@ const Product = ({
               <div className="">
                 <h2 className="font-bold">Description</h2>
 
-                <PrismicRichText field={product.description} />
+                <RichText text={product.description} />
               </div>
 
               <div className="mt-8 border-t border-gray-200 pt-8">

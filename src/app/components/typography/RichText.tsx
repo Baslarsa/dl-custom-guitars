@@ -1,6 +1,7 @@
 "use client";
 import useIsMobile from "@/hooks/useIsMobile";
 import { RichTextField } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import classNames from "classnames";
 import { strong } from "framer-motion/client";
@@ -25,10 +26,16 @@ const RichText = ({
       </h5>
     ),
     strong: ({ children }: { children: React.ReactNode }) => (
-      <strong className="font-semibold">{children}</strong>
+      <strong className="font-semibold opacity-100">{children}</strong>
     ),
     paragraph: ({ children }: { children: React.ReactNode }) => (
-      <p className="text-white">{children}</p>
+      <p className="text-white opacity-90">{children}</p>
+    ),
+    image: ({ node }: { node: any }) => (
+      <PrismicNextImage
+        field={node}
+        className="rounded-[10px] my-2 self-start"
+      />
     ),
     embed: ({ node }: { node: any }) => (
       <div
@@ -38,17 +45,19 @@ const RichText = ({
       >
         {
           <iframe
-            width={isMobile ? "100%" : "560"}
+            width={isMobile ? "100%" : "100%"}
             height={isMobile ? "100%" : "315"}
+            className="max-h-[310px] max-w-[600px]"
             src="https://www.youtube.com/embed/sG0MigLe7-o?feature=oembed"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
-            title="DL Custom Guitars - DL-45 Indian rosewood &amp; European Spruce"
-          ></iframe>
+            title="Embedded youtube"
+          />
         }
       </div>
     ),
   };
+  console.log(text);
   return <PrismicRichText field={text} components={components} />;
 };
 

@@ -37,11 +37,9 @@ export default async function Page({ params }: Props) {
       <Container>
         <div className="flex flex-col items-center max-w-4xl mx-auto">
           <PageTitleComponent title={page.data.title} />
-          <div className="rounded-md relative my-8 w-full h-[600px] overflow-hidden flex justify-center items-center">
+          <div className="rounded-md relative my-8 w-full overflow-hidden flex justify-center items-center">
             <PrismicNextImage
               field={page.data.image}
-              width={800}
-              fill={true}
               imgixParams={{
                 fm: "jpg",
                 auto: ["compress", "format", "enhance"],
@@ -50,7 +48,7 @@ export default async function Page({ params }: Props) {
               }}
             />
           </div>
-          <div className="w-full py-2">
+          <div className="w-full">
             <RichText text={page.data.sub_title} />
           </div>
           <RichText text={page.data.body_text} />

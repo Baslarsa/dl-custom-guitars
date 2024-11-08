@@ -31,10 +31,10 @@ const nextConfig = {
             key: "Content-Security-Policy",
             value:
               "default-src 'self'; " +
-              "frame-src https://dlguitars.prismic.io https://dlgutars.prismic.io https://www.googletagmanager.com; " +
+              "frame-src https://dlguitars.prismic.io https://dlgutars.prismic.io https://www.googletagmanager.com https://www.youtube.com; " +
               "script-src 'self' https://static.cdn.prismic.io https://www.googletagmanager.com 'unsafe-inline' 'unsafe-eval'; " +
-              "connect-src 'self' https://dlguitars.prismic.io https://www.google-analytics.com https://www.googletagmanager.com https://region1.google-analytics.com; " +
-              "img-src 'self' https://images.prismic.io https://www.googletagmanager.com https://www.google-analytics.com; " +
+              "connect-src 'self' https://dlguitars.prismic.io https://www.google-analytics.com https://www.googletagmanager.com https://www.youtube.com https://region1.google-analytics.com; " +
+              "img-src 'self' https://images.prismic.io https://www.googletagmanager.com https://www.youtube.com https://www.google-analytics.com; " +
               "style-src 'self' 'unsafe-inline';",
           },
         ],
