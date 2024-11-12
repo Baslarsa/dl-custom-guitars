@@ -1,0 +1,52 @@
+{
+  "format": "custom",
+  "id": "tools",
+  "label": "Tools",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "uid": {
+        "type": "Text",
+        "config": {
+          "label": "UID",
+          "placeholder": ""
+        }
+      },
+      "seo_title": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Title",
+          "placeholder": ""
+        }
+      },
+      "seo_description": {
+        "type": "Text",
+        "config": {
+          "label": "SEO Description",
+          "placeholder": ""
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "contact_form": {
+              "type": "SharedSlice"
+            },
+            "divider": {
+              "type": "SharedSlice"
+            },
+            "title_and_text": {
+              "type": "SharedSlice"
+            },
+            "page_title": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}

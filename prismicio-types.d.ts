@@ -699,6 +699,62 @@ export type ProductsPageDocument<Lang extends string = string> =
     Lang
   >;
 
+type ToolsDocumentDataSlicesSlice =
+  | ContactFormSlice
+  | DividerSlice
+  | TitleAndTextSlice
+  | PageTitleSlice;
+
+/**
+ * Content for Tools documents
+ */
+interface ToolsDocumentData {
+  /**
+   * SEO Title field in *Tools*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tools.seo_title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_title: prismic.KeyTextField;
+
+  /**
+   * SEO Description field in *Tools*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tools.seo_description
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  seo_description: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Tools*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: tools.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ToolsDocumentDataSlicesSlice>;
+}
+
+/**
+ * Tools document from Prismic
+ *
+ * - **API ID**: `tools`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ToolsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<Simplify<ToolsDocumentData>, "tools", Lang>;
+
 export type AllDocumentTypes =
   | ArticleDocument
   | ArticlesPageDocument
@@ -708,7 +764,8 @@ export type AllDocumentTypes =
   | MenuDocument
   | ProductDocument
   | ProductPageDocument
-  | ProductsPageDocument;
+  | ProductsPageDocument
+  | ToolsDocument;
 
 /**
  * Primary content in *ContactForm → Default → Primary*
@@ -1621,6 +1678,9 @@ declare module "@prismicio/client" {
       ProductsPageDocument,
       ProductsPageDocumentData,
       ProductsPageDocumentDataProductsItem,
+      ToolsDocument,
+      ToolsDocumentData,
+      ToolsDocumentDataSlicesSlice,
       AllDocumentTypes,
       ContactFormSlice,
       ContactFormSliceDefaultPrimary,

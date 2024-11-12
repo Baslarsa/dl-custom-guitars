@@ -57,7 +57,6 @@ const RichText = ({
       </div>
     ),
   };
-  console.log(text);
   return <PrismicRichText field={text} components={components} />;
 };
 
