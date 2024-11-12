@@ -34,6 +34,7 @@ export default async function RootLayout({
           src="https://static.cdn.prismic.io/prismic.js?new=true&repo=dlgutars"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" href="/dl-favicon.png" sizes="any" />
       </head>
       <body className={classNames(poppins.variable, "bg-black")}>
         <div className="font-poppins font-thin">
