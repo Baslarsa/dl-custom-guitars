@@ -80,6 +80,7 @@ const Product = ({
                 ))}
               </Swiper>
               <Swiper
+                // @ts-ignore
                 onSwiper={setThumbsSwiper}
                 spaceBetween={10}
                 slidesPerView={4}
@@ -104,6 +105,7 @@ const Product = ({
             <Lightbox
               open={open}
               close={() => setOpen(false)}
+              // @ts-ignore
               slides={product.images?.map((item) => ({
                 src: item.image.url,
               }))}
