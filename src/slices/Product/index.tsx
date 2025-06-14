@@ -66,7 +66,7 @@ const Product = ({
               >
                 {product.images?.map((item, index) => (
                   <SwiperSlide>
-                    <div className="w-full h-[500px]">
+                    <div className="w-full h-[500px] overflow-hidden mb-10">
                       <PrismicNextImage
                         key={item.image.url}
                         field={item.image}
@@ -86,7 +86,7 @@ const Product = ({
                 slidesPerView={4}
                 freeMode={true}
                 watchSlidesProgress={true}
-                modules={[FreeMode, Navigation, Thumbs]}
+                modules={[FreeMode, Thumbs]}
                 className="mySwiper"
               >
                 {product.images?.map((item, index) => (
