@@ -1,5 +1,4 @@
 import { createClient } from "@/prismicio";
-import Container from "../components/layout/Container";
 import ToolBox from "../components/tools/ToolsPage";
 import { Metadata } from "next";
 import { SliceZone } from "@prismicio/react";
@@ -24,9 +23,9 @@ export default async function Page() {
 
   const request = await client.getSingle("tools");
   return (
-    <Container>
+    <div>
       <SliceZone slices={request.data.slices} components={components} />
       <ToolBox />
-    </Container>
+    </div>
   );
 }

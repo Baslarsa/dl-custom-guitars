@@ -16,6 +16,7 @@ const PageTitle = ({ slice }: PageTitleProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="pt-8 bg-neutral-900"
     >
       <Container>
         <PageTitleComponent

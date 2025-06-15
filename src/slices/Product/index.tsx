@@ -46,7 +46,7 @@ const Product = ({
     setActiveIndex(index);
   };
   return (
-    <div className="bg-black text-white">
+    <div className="bg-neutral-950 text-white">
       <div className="pb-16 pt-6 sm:pb-24">
         <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
@@ -66,13 +66,13 @@ const Product = ({
               >
                 {product.images?.map((item, index) => (
                   <SwiperSlide>
-                    <div className="w-full h-[500px] overflow-hidden mb-10">
+                    <div className="w-full md:h-[500px] h-[300px] overflow-hidden mb-10">
                       <PrismicNextImage
                         key={item.image.url}
                         field={item.image}
                         onClick={() => handleImageClick(index)}
                         className={classNames(
-                          "rounded-lg w-full h-full object-contain object-center cursor-pointer"
+                          "rounded-lg h-full object-contain aspect-auto cursor-pointer border"
                         )}
                       />
                     </div>
