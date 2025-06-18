@@ -1,3 +1,4 @@
+import { Button } from "@headlessui/react";
 import classNames from "classnames";
 
 const SimpleButton = ({
@@ -9,17 +10,7 @@ const SimpleButton = ({
   onClick: () => void;
   className?: string;
 }) => {
-  return (
-    <button
-      className={classNames(
-        className,
-        "bg-white text-black px-6 py-2 mx-1 opacity-90 hover:opacity-100 transition-all rounded-[2px]"
-      )}
-      onClick={onClick}
-    >
-      {text}
-    </button>
-  );
+  return <Button onClick={onClick}>{text}</Button>;
 };
 
 export default SimpleButton;

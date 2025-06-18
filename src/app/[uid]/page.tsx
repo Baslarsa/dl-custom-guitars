@@ -2,6 +2,7 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
 import { Metadata, ResolvingMetadata } from "next";
+import { notFound } from "next/navigation";
 type Props = {
   params: Promise<{ uid: string; title: string; description: string }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -20,7 +21,12 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Page({ params }: Props) {
   const client = createClient();
 
-  const page = await client.getByUID("default_page", (await params).uid);
+  const page = await client
+    .getByUID("default_page", (await params).uid)
+    .catch(() => notFound());
+  if (!page) {
+    return <h1>404</h1>;
+  }
 
   return <SliceZone slices={page.data.slices} components={components} />;
 }

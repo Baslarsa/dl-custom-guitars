@@ -34,7 +34,7 @@ const nextConfig = {
               "frame-src https://dlguitars.prismic.io https://dlgutars.prismic.io https://www.googletagmanager.com https://www.youtube.com; " +
               "script-src 'self' https://static.cdn.prismic.io https://www.googletagmanager.com 'unsafe-inline' 'unsafe-eval'; " +
               "connect-src 'self' https://dlguitars.prismic.io https://www.google-analytics.com https://www.googletagmanager.com https://www.youtube.com https://region1.google-analytics.com; " +
-              "img-src 'self' https://images.prismic.io https://www.googletagmanager.com https://www.youtube.com https://www.google-analytics.com; " +
+              "img-src 'self' https://images.prismic.io https://www.googletagmanager.com https://www.youtube.com https://www.google-analytics.com https://images.unsplash.com;" +
               "style-src 'self' 'unsafe-inline';",
           },
         ],

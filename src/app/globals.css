@@ -11,6 +11,10 @@ p {
   letter-spacing: 0.025rem;
 }
 
+.ReactGridGallery_tile-viewport {
+  background-color: black;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;

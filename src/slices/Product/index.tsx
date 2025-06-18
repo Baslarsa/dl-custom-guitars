@@ -72,7 +72,7 @@ const Product = ({
                         field={item.image}
                         onClick={() => handleImageClick(index)}
                         className={classNames(
-                          "rounded-lg h-full object-contain aspect-auto cursor-pointer border"
+                          "h-full object-contain aspect-auto cursor-pointer"
                         )}
                       />
                     </div>
