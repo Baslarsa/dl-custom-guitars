@@ -12,7 +12,9 @@ export async function middleware(request: NextRequest) {
 
   // Check if there is any supported locale in the pathname
   const { pathname } = request.nextUrl;
-
+  if (pathname === "/sitemap.xml") {
+    return NextResponse.next();
+  }
   const pathnameIsMissingLocale = locales.every(
     (locale) => !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`
   );
