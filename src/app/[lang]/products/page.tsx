@@ -1,14 +1,20 @@
+import { reverseLocaleLookup } from "@/i18n";
 import { createClient } from "@/prismicio";
 import { PrismicRichText } from "@prismicio/react";
 import { Metadata, ResolvingMetadata } from "next";
 type Props = {
-  params: Promise<{ uid: string; title: string; description: string }>;
+  params: Promise<{
+    uid: string;
+    title: string;
+    description: string;
+    lang: string;
+  }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const client = createClient({}, false);
-
+  const { lang } = await params;
   const page = await client.getSingle("products_page", {
     fetchLinks: [
       "product.title",
@@ -16,15 +22,16 @@ export async function generateMetadata(): Promise<Metadata> {
       "product.images",
       "product.price",
     ],
+    lang,
   });
   return {
     title: page.data.seo_title,
     description: page.data.seo_description,
   };
 }
-export default async function Page() {
+export default async function Page({ params }: Props) {
   const client = createClient({}, false);
-
+  const { lang } = await params;
   const request = await client.getSingle("products_page", {
     fetchLinks: [
       "product.title",
@@ -32,13 +39,14 @@ export default async function Page() {
       "product.images",
       "product.price",
     ],
+    lang,
   });
   const data = request.data.products.map((item) => item.products);
 
   // @ts-ignore
   const deepProducts = data.map((item) => ({ ...item.data, uid: item.uid }));
   const productItems = deepProducts.map((item) => ({
-    images: item.images.map((image: any) => image.image),
+    images: item.images?.map((image: any) => image.image),
     name: item.title,
     description: item.description,
     href: `/products/${item.uid}`,

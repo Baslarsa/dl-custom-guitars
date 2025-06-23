@@ -25,7 +25,6 @@ const ParallaxImageGrid = ({ slice }: ParallaxImageGridProps): JSX.Element => {
   const [index, setIndex] = useState(-1);
 
   const handleClick = (index: number, item: any) => setIndex(index);
-  console.log(slice.primary.images);
 
   const images = slice.primary.images.map((item: any) => ({
     src: item.link.url || "",
@@ -40,7 +39,6 @@ const ParallaxImageGrid = ({ slice }: ParallaxImageGridProps): JSX.Element => {
     height,
   }));
 
-  console.log({ images, slides });
   return (
     <section
       data-slice-type={slice.slice_type}

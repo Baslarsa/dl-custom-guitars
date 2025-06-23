@@ -14,31 +14,31 @@ export const repositoryName =
 const routes: prismic.ClientConfig["routes"] = [
   {
     type: "home_page",
-    path: "/",
+    path: "/:lang?",
   },
   {
     type: "default_page",
-    path: "/:uid",
+    path: "/:lang?/:uid",
   },
   {
     type: "article",
-    path: "/articles/:uid",
+    path: "/:lang?/articles/:uid",
   },
   {
     type: "products_page",
-    path: "/products",
+    path: "/:lang?/products",
   },
   {
     type: "product_page",
-    path: "/products/:uid",
+    path: "/:lang?/products/:uid",
   },
   {
     type: "articles_page",
-    path: "/articles",
+    path: "/:lang?/articles",
   },
   {
     type: "tools",
-    path: "/tools",
+    path: "/:lang?/tools",
   },
 ];
 

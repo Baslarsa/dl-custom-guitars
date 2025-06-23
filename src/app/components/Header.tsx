@@ -13,6 +13,9 @@ import {
 import Container from "./layout/Container";
 import SiteLogo from "./svg_components/SiteLogo";
 import useIsMobile from "@/hooks/useIsMobile";
+import { GlobeIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
 const MenuIcon = ({
   onClick,
@@ -78,7 +81,6 @@ const Header = ({
   const handleMobileNavToggle = () => {
     setMobileNavOpen(!mobileNavOpen);
   };
-
   useEffect(() => {
     if (mobileNavOpen) {
       document.body.style.overflow = "hidden";
@@ -102,7 +104,8 @@ const Header = ({
         >
           <SiteLogo fill={scrolled ? "black" : "white"} className={"w-12"} />
           {!isMobile && <Nav scrolled={scrolled} menuItems={menuItems} />}
-          <div className={""}>
+          <div className={"flex gap-4"}>
+            <LanguageSwitcher scrolled={scrolled} />
             {isMobile ? (
               <MenuIcon
                 onClick={handleMobileNavToggle}
@@ -137,6 +140,29 @@ const Header = ({
   );
 };
 
+const LanguageSwitcher = ({ scrolled }: { scrolled: boolean }) => {
+  const { lang } = useParams();
+  const isFiLocale = lang === "fi";
+  const isEnLocale = lang === "en-us";
+  return (
+    <div
+      className={classNames(
+        scrolled ? "text-black" : "text-white",
+        "flex items-center gap-2"
+      )}
+    >
+      <GlobeIcon />
+      <Link href="/en-us" className={classNames(!isEnLocale && "opacity-50")}>
+        English
+      </Link>
+      <span>ı</span>
+      <Link href="/fi" className={classNames(!isFiLocale && "opacity-50")}>
+        Suomi
+      </Link>
+    </div>
+  );
+};
+
 const Nav = ({
   scrolled,
   menuItems,
@@ -149,7 +175,7 @@ const Nav = ({
       {menuItems.map((item) => (
         <PrismicNextLink
           field={item.link}
-          key={item.title}
+          key={item.link.text}
           className={classNames(
             scrolled ? "text-black" : "text-white",
             "hover:opacity-100 opacity-85 transition-all"

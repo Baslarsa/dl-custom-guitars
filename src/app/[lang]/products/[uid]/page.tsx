@@ -1,14 +1,23 @@
+import { reverseLocaleLookup } from "@/i18n";
 import { createClient } from "@/prismicio";
 import Product from "@/slices/Product";
 import { Metadata } from "next";
 import Head from "next/head";
 type Props = {
-  params: Promise<{ uid: string; title: string; description: string }>;
+  params: Promise<{
+    uid: string;
+    title: string;
+    description: string;
+    lang: string;
+  }>;
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { lang } = await params;
   const client = createClient({}, false);
-  const page = await client.getSingle("product");
+  const page = await client.getSingle("product", {
+    lang,
+  });
 
   return {
     title: `${page.data.title} - DL Custom Guitars`,
@@ -18,7 +27,11 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Page({ params, searchParams }: Props) {
   const client = createClient();
 
-  const page = await client.getByUID("product", (await params).uid);
+  const { lang } = await params;
+
+  const page = await client.getByUID("product", (await params).uid, {
+    lang,
+  });
 
   const productSchema = {
     "@context": "https://schema.org/",
