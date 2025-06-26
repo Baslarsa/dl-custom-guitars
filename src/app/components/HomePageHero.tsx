@@ -40,8 +40,9 @@ const HomePageHero = ({
           className="w-full h-full object-cover bg-no-repeat"
           imgixParams={{
             fit: "fill",
+            auto: ["compress", "format"],
             fm: "jpg",
-            q: 20,
+            q: 50,
           }}
         />
       </div>
