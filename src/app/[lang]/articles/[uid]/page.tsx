@@ -1,12 +1,11 @@
+import Container from "@/app/components/layout/Container";
+import RichText from "@/app/components/typography/RichText";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { PrismicNextImage } from "@prismicio/next";
 import { SliceZone } from "@prismicio/react";
 import { Metadata } from "next";
 import PageTitleComponent from "../../../components/typography/PageTitleComponent";
-import { PrismicNextImage } from "@prismicio/next";
-import Container from "@/app/components/layout/Container";
-import RichText from "@/app/components/typography/RichText";
-import { reverseLocaleLookup } from "@/i18n";
 type Props = {
   params: Promise<{
     uid: string;

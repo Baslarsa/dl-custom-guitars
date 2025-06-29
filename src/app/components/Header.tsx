@@ -1,9 +1,12 @@
 "use client";
-import { MenuItem } from "@/components/ui/navbar-menu";
+import useIsMobile from "@/hooks/useIsMobile";
 import { GroupField } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { GlobeIcon } from "@radix-ui/react-icons";
 import classNames from "classnames";
 import { useMotionValueEvent, useScroll } from "framer-motion";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import {
   FooterDocumentDataSocialItem,
@@ -12,10 +15,6 @@ import {
 } from "../../../prismicio-types";
 import Container from "./layout/Container";
 import SiteLogo from "./svg_components/SiteLogo";
-import useIsMobile from "@/hooks/useIsMobile";
-import { GlobeIcon } from "@radix-ui/react-icons";
-import Link from "next/link";
-import { useParams } from "next/navigation";
 
 const MenuIcon = ({
   onClick,
@@ -52,16 +51,6 @@ const MenuIcon = ({
       ></div>
     </div>
   );
-};
-
-type MenuItem = {
-  name: string;
-  href: string;
-  subMenu?: {
-    name: string;
-    href: string;
-    src?: string;
-  }[];
 };
 
 const Header = ({
@@ -195,9 +184,7 @@ const MobileNav = ({
   menuItems: GroupField<Simplify<MenuDocumentDataMenuLinkItem>>;
   onClick: () => void;
 }) => {
-  const [active, setActive] = useState<string | null>(null);
   const handleClick = () => {
-    setActive(null);
     onClick();
   };
   return (
@@ -212,7 +199,6 @@ const MobileNav = ({
           <PrismicNextLink
             key={item.title}
             field={item.link}
-            // @ts-ignore
             onClick={handleClick}
             className="text-2xl"
           />

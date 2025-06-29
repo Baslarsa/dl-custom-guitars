@@ -15,7 +15,10 @@ const initialFormState = {
   email: "",
   message: "",
 };
-const reducer = (state: typeof initialFormState, action: any) => {
+const reducer = (
+  state: typeof initialFormState,
+  action: { type: string; payload: string }
+) => {
   switch (action.type) {
     case "name":
       return {
@@ -53,7 +56,7 @@ export function ContactFormComponent({
     e.preventDefault();
     const response = await sendEmail(state);
     if (response?.data.status === "OK") {
-      dispatch({ type: "clear" });
+      dispatch({ type: "clear", payload: "" });
     }
   };
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {

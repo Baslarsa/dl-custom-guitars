@@ -4,7 +4,6 @@ import { RichTextField } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
 import classNames from "classnames";
-import { strong } from "framer-motion/client";
 
 const RichText = ({
   text,

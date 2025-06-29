@@ -4,11 +4,6 @@ import { Metadata } from "next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
 
-type Props = {
-  params: Promise<{ uid: string; title: string; description: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient();
 

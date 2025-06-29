@@ -1,5 +1,5 @@
 import { KeyTextField, RichTextField } from "@prismicio/client";
-import { PrismicRichTextProps } from "@prismicio/react";
+import Image from "next/image";
 
 export type CardProps = {
   id: string;
@@ -20,9 +20,11 @@ export default function CardGrid({ items }: { items: CardProps[] }) {
               key={post.id}
               className="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80"
             >
-              <img
-                alt=""
+              <Image
                 src={post.imageUrl}
+                alt={post.title || ""}
+                width={1200}
+                height={600}
                 className="absolute inset-0 -z-10 h-full w-full object-cover"
               />
               <div className="absolute inset-0 -z-10 bg-gradient-to-t from-gray-900 via-gray-900/40" />

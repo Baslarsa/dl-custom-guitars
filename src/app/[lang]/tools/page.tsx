@@ -3,7 +3,6 @@ import ToolBox from "../../components/tools/ToolsPage";
 import { Metadata } from "next";
 import { SliceZone } from "@prismicio/react";
 import { components } from "@/slices";
-import { reverseLocaleLookup } from "@/i18n";
 
 type Props = {
   params: Promise<{

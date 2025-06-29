@@ -1,6 +1,5 @@
 "use client";
 import { RichTextField } from "@prismicio/client";
-import { PrismicRichText } from "@prismicio/react";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import RichText from "./RichText";

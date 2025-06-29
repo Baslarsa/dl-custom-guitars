@@ -4,7 +4,6 @@ import InchConverter from "./InchConverter";
 import FretCalculator from "./FretCalculator";
 import DensityCalculator from "./DensityCalculator";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
-import PageTitleComponent from "../typography/PageTitleComponent";
 
 type Tool = {
   id: number;

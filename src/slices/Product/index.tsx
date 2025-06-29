@@ -1,27 +1,19 @@
 "use client";
-import { Content } from "@prismicio/client";
-import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import classNames from "classnames";
-import "swiper/css";
-import "swiper/css/free-mode";
-import "swiper/css/navigation";
-import "swiper/css/thumbs";
-import {
-  ProductDocument,
-  ProductDocumentData,
-  Simplify,
-} from "../../../prismicio-types";
-import { PrismicNextImage } from "@prismicio/next";
 import RichText from "@/app/components/typography/RichText";
-import { FreeMode, Navigation, Thumbs } from "swiper/modules";
+import { Content } from "@prismicio/client";
+import { PrismicNextImage } from "@prismicio/next";
+import { SliceComponentProps } from "@prismicio/react";
+import classNames from "classnames";
 import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/thumbs";
+import { FreeMode, Thumbs } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
+import { ProductDocumentData, Simplify } from "../../../prismicio-types";
 
 /**
  * Props for `Product`.
@@ -65,7 +57,7 @@ const Product = ({
                 modules={[FreeMode, Thumbs]}
               >
                 {product.images?.map((item, index) => (
-                  <SwiperSlide>
+                  <SwiperSlide key={index}>
                     <div className="w-full md:h-[500px] h-[300px] overflow-hidden mb-10">
                       <PrismicNextImage
                         key={item.image.url}
@@ -80,7 +72,7 @@ const Product = ({
                 ))}
               </Swiper>
               <Swiper
-                // @ts-ignore
+                // @ts-expect-error out of control
                 onSwiper={setThumbsSwiper}
                 spaceBetween={10}
                 slidesPerView={4}
@@ -90,7 +82,7 @@ const Product = ({
                 className="mySwiper"
               >
                 {product.images?.map((item, index) => (
-                  <SwiperSlide>
+                  <SwiperSlide key={index}>
                     <div className="w-full h-36 cursor-pointer">
                       <PrismicNextImage
                         key={item.image.url}
@@ -105,7 +97,7 @@ const Product = ({
             <Lightbox
               open={open}
               close={() => setOpen(false)}
-              // @ts-ignore
+              // @ts-expect-error out of control
               slides={product.images?.map((item) => ({
                 src: item.image.url,
               }))}

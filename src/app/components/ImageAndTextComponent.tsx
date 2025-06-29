@@ -7,24 +7,21 @@ import {
   RichTextField,
 } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
-import { PrismicRichText } from "@prismicio/react";
 import classNames from "classnames";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Container from "./layout/Container";
 import { Simplify } from "../../../prismicio-types";
 import ButtonGroup from "./buttons/ButtonGroup";
+import Container from "./layout/Container";
 import RichText from "./typography/RichText";
 const ImageAndTextComponent = ({
   image,
   title,
   text,
-  imageClass = "object-cover",
   inverted = false,
   buttons,
 }: {
   image: ImageFieldImage;
-  imageClass?: string;
   title: KeyTextField;
   text: RichTextField;
   inverted?: boolean;

@@ -1,4 +1,3 @@
-import { reverseLocaleLookup } from "@/i18n";
 import { createClient } from "@/prismicio";
 import Product from "@/slices/Product";
 import { Metadata } from "next";
@@ -24,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description: `${page.data.title} - Built by DL Custom Guitars`,
   };
 }
-export default async function Page({ params, searchParams }: Props) {
+export default async function Page({ params }: Props) {
   const client = createClient();
 
   const { lang } = await params;

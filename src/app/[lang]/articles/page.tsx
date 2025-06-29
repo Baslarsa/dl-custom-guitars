@@ -2,13 +2,8 @@ import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
 import { Metadata } from "next";
-import CardGrid, { CardProps } from "../../components/CardGrid";
 import { ArticleDocument } from "../../../../prismicio-types";
-type Props = {
-  params: Promise<{ uid: string; title: string; description: string }>;
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-};
-
+import CardGrid, { CardProps } from "../../components/CardGrid";
 export async function generateMetadata(): Promise<Metadata> {
   const client = createClient({}, false);
 

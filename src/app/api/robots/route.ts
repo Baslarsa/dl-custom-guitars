@@ -1,8 +1,6 @@
 // src/app/api/robots/route.ts
 
-import { NextRequest } from "next/server";
-
-export function GET(req: NextRequest) {
+export function GET() {
   const robotsTxt = `User-agent: *
 Disallow:
 

@@ -25,27 +25,3 @@ export const valueMaxDecimals = (value: number, decimals: number = 3) => {
   const factor = Math.pow(10, decimals);
   return Math.round(value * factor) / factor;
 };
-type FretData = {
-  fretNumber: number;
-  distanceFromPreviousFret: number;
-  distanceToNut: number;
-};
-const calculateFrets = (numOfFrets: number, scaleLength: number) => {
-  const fretSpacingFactor = 17.817154;
-  const fretSpacings: FretData[] = [];
-  let remainingScale = scaleLength;
-
-  for (let i = 0; i < numOfFrets; i++) {
-    const fretPosition = remainingScale / fretSpacingFactor;
-    remainingScale -= fretPosition;
-    const distanceToNut = scaleLength - remainingScale;
-
-    fretSpacings.push({
-      fretNumber: i + 1,
-      distanceFromPreviousFret: valueMaxDecimals(fretPosition),
-      distanceToNut: valueMaxDecimals(distanceToNut),
-    });
-  }
-
-  return fretSpacings;
-};

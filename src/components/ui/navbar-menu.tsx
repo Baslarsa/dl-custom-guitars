@@ -39,7 +39,7 @@ export const MenuItem = ({
         transition={{ duration: 0.3 }}
         className={classNames(
           textColor,
-          "cursor-pointer hover:opacity-100 opacity-80 transition-all duration-300"
+          "cursor-pointer hover:opacity-100 opacity-80 transition-all duration-300",
         )}
       >
         {item}

@@ -24,7 +24,7 @@ export function createLocaleRedirect(request: NextRequest): Response {
   const locales = Object.keys(LOCALES);
   const locale = match(languages, locales, locales[0]);
 
-  // @ts-ignore
+  // @ts-expect-error out of control
   request.nextUrl.pathname = `/${LOCALES[locale]}${request.nextUrl.pathname}`;
 
   return Response.redirect(request.nextUrl);
@@ -43,7 +43,7 @@ export function pathnameHasLocale(request: NextRequest): boolean {
  */
 export function reverseLocaleLookup(locale: string): string | undefined {
   for (const key in LOCALES) {
-    // @ts-ignore
+    // @ts-expect-error out of control
     if (LOCALES[key] === locale) {
       return key;
     }

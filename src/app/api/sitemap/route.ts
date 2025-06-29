@@ -1,7 +1,6 @@
-import { NextRequest } from "next/server";
 import { createClient } from "@/prismicio";
 
-export async function GET(req: NextRequest) {
+export async function GET() {
   const baseUrl = process.env.SITE_URL || "https://dlcustomguitars.com";
   const client = createClient();
 
@@ -10,7 +9,7 @@ export async function GET(req: NextRequest) {
 
   const allPages = await Promise.all(
     locales.map(async (locale) => {
-      // @ts-ignore
+      // @ts-expect-error out of control
       const clientWithLocale = createClient({ lang: locale });
 
       const homePage = await clientWithLocale.getAllByType("home_page");

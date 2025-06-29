@@ -1,8 +1,7 @@
-import { reverseLocaleLookup } from "@/i18n";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { SliceZone } from "@prismicio/react";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 import { notFound } from "next/navigation";
 type Props = {
   params: Promise<{

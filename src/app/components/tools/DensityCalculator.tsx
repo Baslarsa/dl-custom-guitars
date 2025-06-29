@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { calculateDensity, valueMaxDecimals } from "./utils";
 import TextInput from "../typography/TextInput";
-import HoverButton from "../buttons/HoverButton";
 import PageTitleComponent from "../typography/PageTitleComponent";
 import SimpleButton from "../buttons/SimpleButton";
 

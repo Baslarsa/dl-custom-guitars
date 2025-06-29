@@ -1,7 +1,7 @@
-import { reverseLocaleLookup } from "@/i18n";
 import { createClient } from "@/prismicio";
+import { PrismicNextImage, PrismicNextImageProps } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
-import { Metadata, ResolvingMetadata } from "next";
+import { Metadata } from "next";
 type Props = {
   params: Promise<{
     uid: string;
@@ -43,10 +43,12 @@ export default async function Page({ params }: Props) {
   });
   const data = request.data.products.map((item) => item.products);
 
-  // @ts-ignore
+  // @ts-expect-error out of control
   const deepProducts = data.map((item) => ({ ...item.data, uid: item.uid }));
   const productItems = deepProducts.map((item) => ({
-    images: item.images?.map((image: any) => image.image),
+    images: item.images?.map(
+      (image: { image: PrismicNextImageProps }) => image.image
+    ),
     name: item.title,
     description: item.description,
     href: `/products/${item.uid}`,
@@ -59,7 +61,7 @@ export default async function Page({ params }: Props) {
         <h2 className="sr-only">Products</h2>
 
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-          {productItems.map((item, i) => {
+          {productItems.map((item) => {
             return (
               <div
                 key={item.id}
@@ -67,9 +69,8 @@ export default async function Page({ params }: Props) {
               >
                 <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none sm:h-96 overflow-hidden">
                   {item.images && (
-                    <img
-                      alt={item.images[0].alt || item.name}
-                      src={item.images[0].url}
+                    <PrismicNextImage
+                      field={item.images[0]}
                       className="h-full w-full object-cover object-center sm:h-full sm:w-full group-hover:opacity-75 transform group-hover:scale-110 scale-100 transition-all "
                     />
                   )}

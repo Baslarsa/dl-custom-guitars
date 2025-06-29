@@ -1,5 +1,4 @@
 import { KeyTextField, RichTextField } from "@prismicio/client";
-import { PrismicRichText } from "@prismicio/react";
 import RevealParagraph from "./RevealParagraph";
 
 const PageTitleComponent = ({
