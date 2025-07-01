@@ -14,6 +14,9 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { ProductDocumentData, Simplify } from "../../../prismicio-types";
+import useIsMobile from "@/hooks/useIsMobile";
+import SectionTitle from "@/app/components/typography/SectionTitle";
+import SectionCategory from "@/app/components/typography/SectionCategory";
 
 /**
  * Props for `Product`.
@@ -32,6 +35,7 @@ const Product = ({
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   const [open, setOpen] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0);
+  const isMobile = useIsMobile();
 
   const handleImageClick = (index: number) => {
     setOpen(true);
@@ -125,6 +129,31 @@ const Product = ({
                   </ul>
                 </div>
               </div>
+            </div>
+          </div>
+          <div className="w-full h-[500px] mt-16">
+            <div className="my-6">
+              <SectionCategory text="Guitar demo" />
+            </div>
+            <div
+              className="w-full h-full"
+              data-oembed={`${product.video_url}`}
+              data-oembed-type={`video`}
+              data-oembed-provider={"YouTube"}
+            >
+              {
+                <iframe
+                  width={"100%"}
+                  height={isMobile ? "200px" : "100%"}
+                  className="max-h-[410px] max-w-[700px]"
+                  src={
+                    "https://www.youtube.com/embed/wzKtS-h7oxY?feature=oembed"
+                  }
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowFullScreen
+                  title="Embedded youtube"
+                />
+              }
             </div>
           </div>
         </div>

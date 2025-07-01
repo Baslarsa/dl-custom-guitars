@@ -36,25 +36,6 @@ const RichText = ({
         className="rounded-[10px] my-2 self-start"
       />
     ),
-    embed: ({ node }: { node: any }) => (
-      <div
-        data-oembed={`${node.oembed.embed_url}`}
-        data-oembed-type={`${node.oembed.type}`}
-        data-oembed-provider={`${node.oembed.provider_name}`}
-      >
-        {
-          <iframe
-            width={isMobile ? "100%" : "100%"}
-            height={isMobile ? "100%" : "315"}
-            className="max-h-[310px] max-w-[600px]"
-            src={node.oembed.embed_url}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-            title="Embedded youtube"
-          />
-        }
-      </div>
-    ),
   };
   return <PrismicRichText field={text} components={components} />;
 };

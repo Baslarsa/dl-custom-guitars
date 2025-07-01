@@ -74,6 +74,13 @@
             }
           }
         }
+      },
+      "video_url": {
+        "type": "Text",
+        "config": {
+          "label": "Video URL",
+          "placeholder": "URL to video showcasing the product"
+        }
       }
     }
   }

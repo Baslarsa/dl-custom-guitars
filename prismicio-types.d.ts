@@ -556,6 +556,17 @@ interface ProductDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   specs: prismic.GroupField<Simplify<ProductDocumentDataSpecsItem>>;
+
+  /**
+   * Video URL field in *Product*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: URL to video showcasing the product
+   * - **API ID Path**: product.video_url
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  video_url: prismic.KeyTextField;
 }
 
 /**
