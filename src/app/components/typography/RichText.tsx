@@ -1,5 +1,4 @@
 "use client";
-import useIsMobile from "@/hooks/useIsMobile";
 import { RichTextField } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { PrismicRichText } from "@prismicio/react";
@@ -12,7 +11,6 @@ const RichText = ({
   text: RichTextField;
   className?: string;
 }) => {
-  const isMobile = useIsMobile();
   const components = {
     heading1: ({ children }: { children: React.ReactNode }) => (
       <h1 className={classNames("text-5xl font-bold pb-6", className)}>

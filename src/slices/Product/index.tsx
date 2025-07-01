@@ -1,5 +1,7 @@
 "use client";
 import RichText from "@/app/components/typography/RichText";
+import SectionCategory from "@/app/components/typography/SectionCategory";
+import useIsMobile from "@/hooks/useIsMobile";
 import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
@@ -14,9 +16,6 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { ProductDocumentData, Simplify } from "../../../prismicio-types";
-import useIsMobile from "@/hooks/useIsMobile";
-import SectionTitle from "@/app/components/typography/SectionTitle";
-import SectionCategory from "@/app/components/typography/SectionCategory";
 
 /**
  * Props for `Product`.
