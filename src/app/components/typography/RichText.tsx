@@ -47,7 +47,7 @@ const RichText = ({
             width={isMobile ? "100%" : "100%"}
             height={isMobile ? "100%" : "315"}
             className="max-h-[310px] max-w-[600px]"
-            src="https://www.youtube.com/embed/sG0MigLe7-o?feature=oembed"
+            src={node.oembed.embed_url}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowFullScreen
             title="Embedded youtube"
