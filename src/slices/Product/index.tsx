@@ -146,9 +146,7 @@ const Product = ({
                   width={"100%"}
                   height={isMobile ? "200px" : "100%"}
                   className="max-h-[410px] max-w-[700px]"
-                  src={
-                    "https://www.youtube.com/embed/wzKtS-h7oxY?feature=oembed"
-                  }
+                  src={product.video_url || ""}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                   allowFullScreen
                   title="Embedded youtube"
