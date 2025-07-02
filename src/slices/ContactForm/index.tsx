@@ -15,7 +15,7 @@ const ContactForm = ({ slice }: ContactFormProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="my-12 bg-black"
+      className="py-12 bg-white"
     >
       <ContactFormComponent
         title={slice.primary.title}

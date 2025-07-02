@@ -11,7 +11,7 @@ const ThreeColumnIncentives = ({
   }[];
 }) => {
   return (
-    <div className="bg-black">
+    <div className="bg-offBlack text-offWhite">
       <h2 className="sr-only">Our perks</h2>
       <div className="mx-auto max-w-7xl divide-y divide-white/20 lg:flex lg:justify-center lg:divide-x lg:divide-y-0 lg:py-8">
         {perks.map((perk, perkIdx) => (

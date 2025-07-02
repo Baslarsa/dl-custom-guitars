@@ -38,14 +38,14 @@ const MenuIcon = ({
       <div
         className={classNames(
           "h-1 w-full rounded-full transition-all",
-          scrolled ? "bg-black" : "bg-white",
+          scrolled ? "bg-offBlack" : "bg-white",
           open ? "rotate-45 transform translate-y-[6px]" : ""
         )}
       ></div>
       <div
         className={classNames(
           "h-1 w-full rounded-full transition-all",
-          scrolled ? "bg-black" : "bg-white",
+          scrolled ? "bg-offBlack" : "bg-white",
           open ? "-rotate-45 transform -translate-y-[6px]" : ""
         )}
       ></div>
@@ -81,7 +81,7 @@ const Header = ({
     <div
       className={classNames(
         "text-black transition-all duration-300 flex justify-center fixed top-0 w-full z-40 flex-col",
-        scrolled ? "bg-white" : "bg-black"
+        scrolled ? "bg-offWhite" : "bg-offBlack"
       )}
     >
       <Container>
@@ -136,7 +136,7 @@ const LanguageSwitcher = ({ scrolled }: { scrolled: boolean }) => {
   return (
     <div
       className={classNames(
-        scrolled ? "text-black" : "text-white",
+        scrolled ? "text-offBlack" : "text-offWhite",
         "flex items-center gap-2"
       )}
     >

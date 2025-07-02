@@ -39,9 +39,9 @@ const ParallaxImageGrid = ({ slice }: ParallaxImageGridProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="my-12 bg-black mx-4"
+      className=" bg-white"
     >
-      <div className="flex justify-center">
+      <div className="flex justify-center pt-8 text-offBlack">
         <SectionTitle title={slice.primary.title} />
       </div>
       <div>
@@ -54,7 +54,6 @@ const ParallaxImageGrid = ({ slice }: ParallaxImageGridProps): JSX.Element => {
           thumbnailStyle={{
             overflow: "hidden",
             height: "100%",
-            borderRadius: 10,
             objectFit: "cover",
             cursor: "pointer",
           }}

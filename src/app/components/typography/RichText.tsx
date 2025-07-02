@@ -26,7 +26,7 @@ const RichText = ({
       <strong className="font-semibold opacity-100">{children}</strong>
     ),
     paragraph: ({ children }: { children: React.ReactNode }) => (
-      <p className="text-white opacity-90">{children}</p>
+      <p className=" opacity-90">{children}</p>
     ),
     image: ({ node }: { node: any }) => (
       <PrismicNextImage

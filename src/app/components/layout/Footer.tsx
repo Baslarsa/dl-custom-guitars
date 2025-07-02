@@ -29,7 +29,7 @@ const Footer = ({ footerData }: { footerData: FooterDocumentData }) => {
           }}
         />
       </Head>
-      <footer className="bg-white min-h-[200px]">
+      <footer className="bg-offWhite min-h-[200px]">
         <div className="mx-auto max-w-7xl overflow-hidden px-6 py-20 sm:py-24 lg:px-8">
           <nav
             aria-label="Footer"

@@ -35,16 +35,16 @@ const ImageAndTextComponent = ({
     <Container>
       <div
         className={classNames(
-          "w-full h-full flex md:flex-row flex-col-reverse",
+          "w-full h-full flex md:flex-row flex-col-reverse text-offBlack",
           inverted && "md:flex-row-reverse"
         )}
       >
         <div className="md:w-1/2 w-full h-full p-4 relative">
           <PrismicNextImage field={image} />
         </div>
-        <div className="md:w-1/2 w-full h-full pt-12 md:px-8 px-4">
+        <div className="md:w-1/2 w-full h-full pt-12 md:px-8 px-4 text-offBlack">
           <motion.h6
-            className="text-4xl font-medium pb-6"
+            className="text-4xl font-medium pb-6 text-offBlack"
             initial={{ opacity: 0 }}
             animate={{ opacity: isInView ? 1 : 0 }}
             viewport={{ once: true, amount: "all" }}

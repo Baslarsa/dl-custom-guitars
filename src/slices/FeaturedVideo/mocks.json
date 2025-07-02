@@ -1,0 +1,30 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"video_url": {
+				"__TYPE__": "FieldContent",
+				"value": "eat",
+				"type": "Text"
+			},
+			"title": {
+				"__TYPE__": "FieldContent",
+				"value": "hold",
+				"type": "Text"
+			},
+			"description": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Eu proident labore ipsum commodo nostrud ipsum et voluptate nulla duis minim amet laborum do adipisicing."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

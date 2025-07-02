@@ -25,8 +25,8 @@ const HoverButton: React.FC<ButtonProps> = ({
       className={classNames(
         className,
         dark
-          ? "text-white bg-black border border-white"
-          : "bg-white text-black",
+          ? "text-white bg-offBlack border border-white"
+          : "bg-white text-offBlack",
         "px-6 py-2 mx-1 opacity-90 hover:opacity-100 transition-all rounded-[2px]"
       )}
       role="button"

@@ -32,6 +32,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "featured_video": {
+              "type": "SharedSlice"
+            },
             "page_title": {
               "type": "SharedSlice"
             },

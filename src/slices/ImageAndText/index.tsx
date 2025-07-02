@@ -15,7 +15,7 @@ const ImageAndText = ({ slice }: ImageAndTextProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="my-12 bg-black"
+      className=" bg-white"
     >
       <ImageAndTextComponent
         image={slice.primary.image}

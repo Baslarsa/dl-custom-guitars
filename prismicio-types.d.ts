@@ -120,6 +120,10 @@ export type ArticleDocument<Lang extends string = string> =
   >;
 
 type ArticlesPageDocumentDataSlicesSlice =
+  | HeroSlice
+  | ImageAndTextSlice
+  | PerksSlice
+  | FeaturedVideoSlice
   | TitleAndTextSlice
   | ContactFormSlice
   | PageTitleSlice
@@ -180,6 +184,7 @@ export type ArticlesPageDocument<Lang extends string = string> =
   >;
 
 type DefaultPageDocumentDataSlicesSlice =
+  | FeaturedVideoSlice
   | ProductSlice
   | ProductsSlice
   | PerksSlice
@@ -329,6 +334,7 @@ export type FooterDocument<Lang extends string = string> =
   >;
 
 type HomePageDocumentDataSlicesSlice =
+  | FeaturedVideoSlice
   | PageTitleSlice
   | PerksSlice
   | ContactFormSlice
@@ -861,6 +867,71 @@ type DividerSliceVariation = DividerSliceDefault;
 export type DividerSlice = prismic.SharedSlice<
   "divider",
   DividerSliceVariation
+>;
+
+/**
+ * Primary content in *FeaturedVideo → Default → Primary*
+ */
+export interface FeaturedVideoSliceDefaultPrimary {
+  /**
+   * Title field in *FeaturedVideo → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_video.default.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Video URL field in *FeaturedVideo → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_video.default.primary.video_url
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  video_url: prismic.KeyTextField;
+
+  /**
+   * Description field in *FeaturedVideo → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: featured_video.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+}
+
+/**
+ * Default variation for FeaturedVideo Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedVideoSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<FeaturedVideoSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *FeaturedVideo*
+ */
+type FeaturedVideoSliceVariation = FeaturedVideoSliceDefault;
+
+/**
+ * FeaturedVideo Shared Slice
+ *
+ * - **API ID**: `featured_video`
+ * - **Description**: FeaturedVideo
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type FeaturedVideoSlice = prismic.SharedSlice<
+  "featured_video",
+  FeaturedVideoSliceVariation
 >;
 
 /**
@@ -1700,6 +1771,10 @@ declare module "@prismicio/client" {
       DividerSlice,
       DividerSliceVariation,
       DividerSliceDefault,
+      FeaturedVideoSlice,
+      FeaturedVideoSliceDefaultPrimary,
+      FeaturedVideoSliceVariation,
+      FeaturedVideoSliceDefault,
       HeroSlice,
       HeroSliceDefaultPrimaryHeroCtaItem,
       HeroSliceDefaultPrimary,

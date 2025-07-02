@@ -1,6 +1,5 @@
 import { createClient } from "@/prismicio";
-import { PrismicNextImage, PrismicNextImageProps } from "@prismicio/next";
-import { PrismicRichText } from "@prismicio/react";
+import { PrismicNextImageProps } from "@prismicio/next";
 import { Metadata } from "next";
 type Props = {
   params: Promise<{
@@ -56,37 +55,27 @@ export default async function Page({ params }: Props) {
     price: item.price,
   }));
   return (
-    <div className="bg-black">
+    <div className="bg-white">
       <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
         <h2 className="sr-only">Products</h2>
 
         <div className="grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-6 sm:gap-y-10 lg:grid-cols-3 lg:gap-x-8">
-          {productItems.map((item) => {
+          {productItems.map((product) => {
+            console.log(product);
             return (
-              <div
-                key={item.id}
-                className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-800 bg-black"
-              >
-                <div className="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none sm:h-96 overflow-hidden">
-                  {item.images && (
-                    <PrismicNextImage
-                      field={item.images[0]}
-                      className="h-full w-full object-cover object-center sm:h-full sm:w-full group-hover:opacity-75 transform group-hover:scale-110 scale-100 transition-all "
-                    />
-                  )}
-                </div>
-                <div className="flex flex-1 flex-col space-y-2 p-4">
-                  <h3 className="text-sm font-medium">
-                    <a href={item.href || "#"}>
-                      <span aria-hidden="true" className="absolute inset-0" />
-                      {item.name}
-                    </a>
-                  </h3>
-                  <PrismicRichText field={item.description} />
-                  <div className="flex flex-1 flex-col justify-end">
-                    <p className="text-base font-medium">{item.price}</p>
-                  </div>
-                </div>
+              <div key={product.id} className="group relative">
+                <img
+                  alt={product.images[0].alt}
+                  src={product.images[0].url}
+                  className="h-96 w-full rounded-lg object-cover group-hover:opacity-75 sm:aspect-2/3"
+                />
+                <h3 className="mt-4 text-base font-semibold text-gray-900">
+                  <a href={product.href}>
+                    <span className="absolute inset-0" />
+                    {product.name}
+                  </a>
+                </h3>
+                <p className="mt-1 text-sm text-gray-500">{product.price}</p>
               </div>
             );
           })}

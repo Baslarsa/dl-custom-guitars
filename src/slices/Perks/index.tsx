@@ -14,7 +14,7 @@ export type PerksProps = SliceComponentProps<Content.PerksSlice>;
 const Perks = ({ slice }: PerksProps): JSX.Element => {
   return (
     <section
-      className="my-12"
+      className="py-12 bg-white text-offBlack"
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
