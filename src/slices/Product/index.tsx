@@ -16,6 +16,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { ProductDocumentData, Simplify } from "../../../prismicio-types";
+import SectionTitle from "@/app/components/typography/SectionTitle";
 
 /**
  * Props for `Product`.
@@ -41,14 +42,13 @@ const Product = ({
     setActiveIndex(index);
   };
   return (
-    <div className="bg-neutral-950 text-white">
+    <div className="bg-white text-offBlack">
       <div className="pb-16 pt-6 sm:pb-24">
         <div className="mx-auto mt-8 max-w-2xl px-4 sm:px-6 lg:max-w-7xl lg:px-8">
+          <SectionTitle title={product.title} />
           <div className="lg:grid lg:auto-rows-min lg:grid-cols-12 lg:gap-x-8">
             <div className="lg:col-span-5 lg:col-start-8">
-              <div className="flex justify-between">
-                <h1 className="text-xl font-medium">{product.title}</h1>
-              </div>
+              <div className="flex justify-between"></div>
             </div>
 
             {/* Image gallery */}
@@ -106,7 +106,7 @@ const Product = ({
               }))}
               index={activeIndex}
             />
-            <div className="mt-8 lg:col-span-5">
+            <div className="mt-8 lg:col-span-5 bg-offWhite p-4 rounded-md">
               {/* Product details */}
               <div className="">
                 <h2 className="font-bold">Description</h2>
@@ -116,8 +116,7 @@ const Product = ({
 
               <div className="mt-8 border-t border-gray-200 pt-8">
                 <h2 className="font-bold">Specs</h2>
-
-                <div className="mt-4 text-white">
+                <div className="mt-4">
                   <ul role="list-disc">
                     {product.specs?.map((item) => (
                       <li key={item.value} className="flex justify-between">
@@ -127,11 +126,15 @@ const Product = ({
                     ))}
                   </ul>
                 </div>
+                <div className="mt-8 flex items-center justify-between">
+                  <h2 className="font-bold mt-8">Price</h2>
+                  <p className="mt-4">{product.price} / excl VAT</p>
+                </div>
               </div>
             </div>
           </div>
           <div className="w-full h-[500px] mt-16">
-            <div className="my-6">
+            <div className="my-6 text-black">
               <SectionCategory text="Guitar demo" />
             </div>
             <div

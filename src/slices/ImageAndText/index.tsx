@@ -15,14 +15,13 @@ const ImageAndText = ({ slice }: ImageAndTextProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className=" bg-white"
+      className="bg-white"
     >
       <ImageAndTextComponent
         image={slice.primary.image}
         title={slice.primary.title}
         text={slice.primary.text}
         buttons={slice.primary.ctas}
-        inverted={slice.variation === "reverse"}
       />
     </section>
   );
